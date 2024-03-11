@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>magifind - AI search</title>
+    <link href="https://fonts.googleapis.com/css?family=Heebo:400,700|IBM+Plex+Sans:600|Poppins:500" rel="stylesheet">
+    <link rel="stylesheet" href="dist/css/style.css">
+    <script src="https://unpkg.com/scrollreveal@4.0.0/dist/scrollreveal.min.js"></script>
+    <style>
+        .header-brand h1 a {
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .lights-toggle {
+            position: absolute;
+            right: 15px;
+            top: 15px;
+        }
+
+        .cta-form input[type="email"] {
+            padding: 12px 20px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 16px;
+            width: 65%;
+            box-sizing: border-box;
+            margin-bottom: 20px;
+            transition: border-color 0.3s ease;
+        }
+
+        .cta-form input[type="email"]:focus {
+            outline: none;
+            border-color: #007bff;
+        }
+
+        .cta-form .button {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 12px 24px;
+            font-size: 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .cta-form .button:hover {
+            background-color: #0056b3;
+        }
+
+        .magifind-text-dark {
+            font-family: 'Poppins', sans-serif;
+            font-size: 30px;
+            margin-left: 15px;
+            margin-top: 15px
+        }
+
+        .magifind-text {
+            font-family: 'Poppins', sans-serif;
+            font-size: 30px;
+            margin-left: 15px;
+            margin-top: 15px
+        }
+
+        .search-results {
+            margin-top: 10px;
+            padding: 10px;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-gap: 20px;
+        }
+
+        .search-results div {
+            padding: 10px;
+            background-color: #f5f5f5;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        .search-results img {
+            width: 100%;
+            height: auto;
+            margin-bottom: 10px;
+        }
+
+        .search-results h3 {
+            margin-top: 0;
+            color: #333;
+            font-weight: bold;
+            font-size: 0.8em;
+            line-height: 1em;
+
+        }
+
+        .search-results p {
+            margin-bottom: 5px;
+        }
+
+        .search-results .price {
+            display: inline-block;
+            margin-right: 10px;
+            font-size: 0.8em;
+        }
+
+        .search-results .rating {
+            display: inline-block;
+        }
+
+        .search-results .buy-now {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+
+
+
+        .search-results-dark {
+            margin-top: 10px;
+            padding: 10px;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-gap: 20px;
+        }
+
+        .search-results-dark div {
+            padding: 10px;
+            background-color: #333;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        .search-results-dark img {
+            width: 100%;
+            height: auto;
+            margin-bottom: 10px;
+        }
+
+        .search-results-dark h3 {
+            margin-top: 0;
+            color: #333;
+            font-weight: bold;
+            font-size: 0.8em;
+            line-height: 1em;
+
+        }
+
+        .search-results-dark p {
+            margin-bottom: 5px;
+        }
+
+
+        @keyframes pop {
+            0% {
+                transform: scale(0);
+            }
+
+            80% {
+                transform: scale(1.1);
+            }
+
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+
+        .search-input-dark {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #333;
+            color: #ccc;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+
+        .container {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .container>* {
+            flex: 1;
+        }
+
+        #demo-container {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+            z-index: 10000;
+
+
+            animation: fadeUpBox 1s 0.2s both cubic-bezier(0.3, 0, 0.2, 1);
+            will-change: transform
+        }
+
+        #demo {
+            width: 100%;
+            max-width: 550px;
+            padding: 20px;
+            text-align: center;
+            position: absolute;
+            height: 500px;
+            top: 0px;
+            left: 120px;
+            transform: perspective(1000px) rotate3d(0, 1, 0, 10deg) translateY(2%);
+        }
+    </style>
+
+
+</head>
+
+<body class="is-boxed has-animations">
+    <div class="body-wrap boxed-container">
+        <header class="site-header">
+            <div class="container">
+                <div class="site-header-inner">
+                    <div class="brand header-brand">
+                        <div id="magifind-text" class="magifind-text">magifind</div>
+                    </div>
+                    <div class="lights-toggle">
+                        <input id="lights-toggle" type="checkbox" name="lights-toggle" class="switch" checked="checked">
+                        <label for="lights-toggle" class="text-xs"><span>Turn me <span
+                                    class="label-text">dark</span></span></label>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <main>
+            <section class="features section">
+                <div class="container">
+                    <div class="features-inner section-inner has-bottom-divider">
+                        <div class="features-header text-center">
+                            <div class="container-sm">
+                                <h2 class="section-title mt-0">Better search, more sales</h2>
+                                <p class="section-paragraph">Our AI search improves user experience and requires no
+                                    integration.
+                                </p>
+                                <div class="features-image">
+                                    <div id="demo-container">
+                                        <div id="demo">
+                                            <input type="text" id="searchInput" class="search-input" disabled>
+                                            <div id="searchResults" class="search-results"></div>
+
+                                            <script>
+
+                                                const searchInput = document.getElementById('searchInput');
+
+                                                const searchResults = document.getElementById('searchResults');
+
+                                                const searchQueries = [
+                                                    'home office setup',
+
+                                                    'toys for kids',
+                                                    'outdoor camping gear',
+
+                                                    //                                                    'dry my basement',
+                                                    'healthy snacks'
+
+                                                ];
+
+                                                const searchResultsData = {
+                                                    'toys for kids': [
+
+                                                        {
+                                                            name: 'Interactive Talking Teddy Bear',
+                                                            price: 39.99,
+                                                            rating: 4.5,
+                                                            image: 'talking-teddy-bear.webp'
+                                                        },
+                                                        {
+                                                            name: 'Remote Control Racing Car',
+                                                            price: 49.99,
+                                                            rating: 4.6,
+                                                            image: 'rc-racing-car.webp'
+                                                        },
+                                                        {
+                                                            name: 'Educational Building Blocks Set',
+                                                            price: 29.99,
+                                                            rating: 4.7,
+                                                            image: 'building-blocks.webp'
+                                                        }
+                                                    ],
+                                                    'dry my basement': [
+                                                        {
+                                                            name: 'PowerDry Pro Dehumidifier',
+                                                            price: 249.99,
+                                                            rating: 4.8,
+                                                            image: 'dehumidifier.webp'
+                                                        },
+                                                        {
+                                                            name: 'HydroFlow Submersible Water Pump',
+                                                            price: 149.99,
+                                                            rating: 4.6,
+                                                            image: 'water-pump.webp'
+                                                        },
+                                                        {
+                                                            name: 'Sand Bags',
+                                                            price: 19.99,
+                                                            rating: 4.3,
+                                                            image: 'desiccant-packs.webp'
+                                                        }
+                                                    ],
+                                                    'outdoor camping gear': [
+                                                        {
+                                                            name: 'Adventurer 4-Person Tent',
+                                                            price: 129.99,
+                                                            rating: 4.7,
+                                                            image: 'camping-tent.webp'
+                                                        },
+                                                        {
+                                                            name: 'TrailChef Portable Camping Stove',
+                                                            price: 79.99,
+                                                            rating: 4.5,
+                                                            image: 'camping-stove.webp'
+                                                        },
+                                                        {
+                                                            name: 'Insulated Sleeping Bag',
+                                                            price: 89.99,
+                                                            rating: 4.6,
+                                                            image: 'sleeping-bag.webp'
+                                                        }
+                                                    ],
+                                                    'healthy snacks': [
+                                                        {
+                                                            name: 'Organic Fruit and Nut Granola Bars',
+                                                            price: 12.99,
+                                                            rating: 4.6,
+                                                            image: 'granola-bars.webp'
+                                                        },
+                                                        {
+                                                            name: 'Baked Veggie Chips Variety Pack',
+                                                            price: 9.99,
+                                                            rating: 4.4,
+                                                            image: 'veggie-chips.webp'
+                                                        },
+                                                        {
+                                                            name: 'Dried Fruit and Nut Mix',
+                                                            price: 8.99,
+                                                            rating: 4.5,
+                                                            image: 'dried-fruit-mix.webp'
+                                                        }
+                                                    ],
+                                                    'home office setup': [
+                                                        {
+                                                            name: 'Ergonomic Office Chair',
+                                                            price: 199.99,
+                                                            rating: 4.8,
+                                                            image: 'office-chair.webp'
+                                                        },
+                                                        {
+                                                            name: 'Adjustable Standing Desk',
+                                                            price: 299.99,
+                                                            rating: 4.7,
+                                                            image: 'standing-desk.webp'
+                                                        },
+                                                        {
+                                                            name: 'Noise-Cancelling Headphones',
+                                                            price: 149.99,
+                                                            rating: 4.6,
+                                                            image: 'noise-cancelling-headphones.webp'
+                                                        }
+                                                    ]
+                                                };
+
+                                                let currentQueryIndex = 0;
+
+                                                let currentQuery = '';
+
+                                                let currentLetterIndex = 0;
+
+                                                function typeQuery() {
+
+                                                    if (currentLetterIndex < searchQueries[currentQueryIndex].length) {
+
+                                                        currentQuery += searchQueries[currentQueryIndex][currentLetterIndex];
+
+                                                        searchInput.value = currentQuery;
+
+                                                        currentLetterIndex++;
+
+                                                        setTimeout(typeQuery, 50);
+
+                                                    } else {
+
+                                                        displaySearchResults();
+
+                                                        setTimeout(nextQuery, 3500);
+
+                                                    }
+
+                                                }
+
+                                                function nextQuery() {
+
+                                                    currentQueryIndex = (currentQueryIndex + 1) % searchQueries.length;
+
+                                                    currentQuery = '';
+
+                                                    currentLetterIndex = 0;
+
+                                                    searchInput.value = '';
+
+                                                    searchResults.innerHTML = '';
+
+                                                    typeQuery();
+
+                                                }
+
+                                                function displaySearchResults() {
+                                                    const query = searchInput.value;
+                                                    const lowercaseQuery = query.toLowerCase();
+                                                    const matchingKey = Object.keys(searchResultsData).find(key => key.toLowerCase() === lowercaseQuery);
+
+                                                    if (matchingKey) {
+                                                        const products = searchResultsData[matchingKey];
+                                                        let resultsHTML = '';
+
+                                                        products.forEach((product, index) => {
+                                                            resultsHTML += `
+                                                  <div style="opacity: 0; transform: scale(0);">
+                                                    <img src="./dist/images/${product.image}" alt="${product.name}">
+                                                    <h3>${product.name}</h3>
+                                                  </div>
+                                                `;
+                                                        });
+
+                                                        searchResults.innerHTML = resultsHTML;
+
+                                                        const resultElements = searchResults.querySelectorAll('div');
+                                                        resultElements.forEach((element, index) => {
+                                                            setTimeout(() => {
+                                                                element.style.opacity = '1';
+                                                                element.style.transform = 'scale(1)';
+                                                                element.style.animation = 'pop 0.5s ease-in-out';
+                                                            }, index * 200);
+                                                        });
+                                                    } else {
+                                                        searchResults.innerHTML = '<p>No results found.</p>';
+                                                    }
+                                                }
+                                                typeQuery();
+                                            </script>
+
+                                        </div>
+                                    </div>
+
+                                    <img class="features-illustration asset-dark"
+                                        src="dist/images/features-illustration-dark.svg" alt="Feature illustration">
+                                    <img class="features-box asset-dark" src="dist/images/features-box-dark.svg"
+                                        alt="Feature box">
+
+
+
+                                    <img class="features-illustration asset-dark"
+                                        src="dist/images/features-illustration-top-dark.svg"
+                                        alt="Feature illustration top">
+                                    <img class="features-illustration asset-light"
+                                        src="dist/images/features-illustration-light.svg" alt="Feature illustration">
+                                    <img class="features-box asset-light" src="dist/images/features-box-light.svg"
+                                        alt="Feature box">
+                                    <img class="features-illustration asset-light"
+                                        src="dist/images/features-illustration-top-light.svg"
+                                        alt="Feature illustration top" style="z-index: 100000;">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="features-wrap">
+                            <div class="feature is-revealing">
+                                <div class="feature-inner">
+                                    <div class="feature-icon">
+                                        <img class="asset-light" src="dist/images/feature-01-light.svg"
+                                            alt="Feature 01">
+                                        <img class="asset-dark" src="dist/images/feature-01-dark.svg" alt="Feature 01">
+                                    </div>
+                                    <div class="feature-content">
+                                        <h3 class="feature-title mt-0">Enhance User Experience</h3>
+                                        <p class="text-sm mb-0">Provide your customers with a superior search experience
+                                            that understands their intent and delivers accurate and relevant results.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="feature is-revealing">
+                                <div class="feature-inner">
+                                    <div class="feature-icon">
+                                        <img class="asset-light" src="dist/images/feature-02-light.svg"
+                                            alt="Feature 02">
+                                        <img class="asset-dark" src="dist/images/feature-02-dark.svg" alt="Feature 02">
+                                    </div>
+                                    <div class="feature-content">
+                                        <h3 class="feature-title mt-0">Boost Conversions</h3>
+                                        <p class="text-sm mb-0">Improve your online retail conversions by helping
+                                            customers find the products they're looking for quickly and easily.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="feature is-revealing">
+                                <div class="feature-inner">
+                                    <div class="feature-icon">
+                                        <img class="asset-light" src="dist/images/feature-03-light.svg"
+                                            alt="Feature 03">
+                                        <img class="asset-dark" src="dist/images/feature-03-dark.svg" alt="Feature 03">
+                                    </div>
+                                    <div class="feature-content">
+                                        <h3 class="feature-title mt-0">Works like magic </h3>
+                                        <p class="text-sm mb-0">Zero integration, our fully autonomous crawlers index
+                                            all the content you have.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section class="cta section">
+                <div class="container-sm">
+                    <div class="cta-inner section-inner">
+                        <div class="cta-header text-center">
+                            <h2 class="section-title mt-0">Get started with <span style="color: #999">magifind</span>
+                            </h2>
+                            <p class="section-paragraph">Elevate your online retail search experience and drive
+                                conversions.</p>
+                            <form id="cta-form" class="cta-form" action="https://link.datatalk.app/subscribe"
+                                method="POST">
+                                <div class="form-group">
+                                    <input type="email" id="email" name="email" placeholder="Enter your email here"
+                                        required>
+                                </div>
+                                <div class="form-group">
+                                    <input type="hidden" name="ref" value="aisearch">
+                                </div>
+                                <div class="form-group">
+                                    <button type="submit" class="button button-primary">Try Now</button>
+                                </div>
+                            </form>
+                            <div id="success-message" class="success-message" style="display: none;">
+                                <p>Thank you for your interest! We'll be in touch soon.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <script>
+                document.getElementById('cta-form').addEventListener('submit', function (e) {
+                    e.preventDefault();
+                    var email = document.getElementById('email').value;
+                    var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                    if (emailRegex.test(email)) {
+                        this.submit();
+                    } else {
+                        alert('Please enter a valid email address.');
+                    }
+                });
+            </script>
+        </main>
+        <footer class="site-footer has-top-divider">
+            <div class="container">
+                <div class="site-footer-inner">
+                    <div class="brand footer-brand">
+                        <div class="brand header-brand">
+                            <div style="color: white !important; font-family: 'Poppins'; font-size: 30px;">magifind
+                            </div>
+                        </div>
+                    </div>
+                    <ul class=" footer-links list-reset">
+                        <li>
+                            <a href="#">Privacy Policy</a>
+                        </li>
+                        <li>
+                            <a href="#">Terms and Conditions</a>
+                        </li>
+                        <li>
+                            <a href="#">FAQ's</a>
+                        </li>
+                        <li>
+                            <a href="#">About Us</a>
+                        </li>
+                    </ul>
+                    <ul class="footer-social-links list-reset">
+                        <li>
+                            <a href="mailto:mail@magifind.app">
+                                <span class="screen-reader-text">Mail</span>
+                                <svg width="16" height="16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <path
+                                        d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z">
+                                    </path>
+                                    <polyline points="22,6 12,13 2,6"></polyline>
+                                </svg>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://github.com/magifindapp/crm" target="_blank">
+                                <span class="screen-reader-text">GitHub</span>
+                                <svg width="16" height="16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <path
+                                        d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22">
+                                    </path>
+                                </svg>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.youtube.com/channel/UCRrSU8GO1CAdwJsmZ9P0dHQ" target="_blank">
+                                <span class="screen-reader-text">YouTube</span>
+                                <svg width="16" height="16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <path
+                                        d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.7 a29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z">
+                                    </path>
+                                    <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon>
+                                </svg> </a>
+                        </li>
+                    </ul>
+                    <div class="footer-copyright">© 2024 magifind AI search, all rights reserved</div>
+                </div>
+            </div>
+        </footer>
+    </div>
+    <script>
+        !function () { const e = document, t = e.documentElement, n = e.body, i = e.getElementById("lights-toggle"), s = window.sr = ScrollReveal(); function a() { let e = i.parentNode.querySelector(".label-text"); i.checked ? (n.classList.remove("lights-off"), e && (e.innerHTML = "dark")) : (n.classList.add("lights-off"), e && (e.innerHTML = "light")) } t.classList.remove("no-js"), t.classList.add("js"), window.addEventListener("load", function () { n.classList.add("is-loaded") }), n.classList.contains("has-animations") && window.addEventListener("load", function () { s.reveal(".feature", { duration: 600, distance: "20px", easing: "cubic-bezier(0.215, 0.61, 0.355, 1)", origin: "right", viewFactor: .2 }) }), i && (window.addEventListener("load", a), i.addEventListener("change", a)) }();
+    </script>
+    <script>
+        const lightsToggle = document.getElementById('lights-toggle');
+        const magifindText = document.getElementById('magifind-text');
+        const searchResults_ = document.getElementById('searchResults');
+        const searchInput_ = document.getElementById('searchInput');
+        const demoContainer = document.getElementById('demo-container');
+
+        lightsToggle.addEventListener('change', function () {
+            if (this.checked) {
+                magifindText.classList.remove('magifind-text-dark');
+                magifindText.classList.add('magifind-text');
+                searchResults_.classList.remove('search-results-dark');
+                searchResults_.classList.add('search-results');
+                searchInput_.classList.remove('search-input-dark');
+                searchInput_.classList.add('search-input');
+                demoContainer.classList.remove('fade-in');
+                void demoContainer.offsetWidth;
+
+
+            } else {
+                magifindText.classList.remove('magifind-text');
+                magifindText.classList.add('magifind-text-dark');
+                searchResults_.classList.remove('search-results');
+                searchResults_.classList.add('search-results-dark');
+                searchInput_.classList.remove('search-input');
+                searchInput_.classList.add('search-input-dark');
+                void demoContainer.offsetWidth;
+                demoContainer.classList.add('fade-in');
+            }
+        });
+    </script>
+</body>
+
+</html>
