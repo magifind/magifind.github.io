@@ -186,7 +186,7 @@
             padding: 10px;
             font-size: 16px;
             border: 1px solid #333;
-            color: #ccc;
+            color: #fff;
             border-radius: 5px;
             margin-bottom: 20px;
         }
@@ -216,16 +216,25 @@
         }
 
         #demo {
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
             width: 100%;
             max-width: 550px;
             padding: 20px;
             text-align: center;
             position: absolute;
-            height: 500px;
             top: 0px;
+            height: 360px;
             left: auto;
             right: auto;
             transform: perspective(1000px) rotate3d(0, 1, 0, 10deg) translateY(2%);
+        }
+
+        .demo-light {
+            background: rgba(255, 255, 255, 0.9);
+        }
+
+        .demo-dark {
+            background: rgba(32, 45, 63, 0.9)
         }
     </style>
 
@@ -260,7 +269,7 @@
                                 </p>
                                 <div class="features-image">
                                     <div id="demo-container">
-                                        <div id="demo">
+                                        <div id="demo" class="demo-light">
                                             <input type="text" id="searchInput" class="search-input" disabled>
                                             <div id="searchResults" class="search-results"></div>
 
@@ -469,18 +478,16 @@
 
                                     <img class="features-illustration asset-dark"
                                         src="dist/images/features-illustration-dark.svg" alt="Feature illustration">
-                                    <img class="features-box asset-dark" src="dist/images/features-box-dark.svg"
-                                        alt="Feature box">
+
 
 
 
                                     <img class="features-illustration asset-dark"
-                                        src="dist/images/features-illustration-top-dark.svg"
+                                        src="dist/images/features-illustration-top-dark.svg" style="z-index: 100000;"
                                         alt="Feature illustration top">
                                     <img class="features-illustration asset-light"
                                         src="dist/images/features-illustration-light.svg" alt="Feature illustration">
-                                    <img class="features-box asset-light" src="dist/images/features-box-light.svg"
-                                        alt="Feature box">
+
                                     <img class="features-illustration asset-light"
                                         src="dist/images/features-illustration-top-light.svg"
                                         alt="Feature illustration top" style="z-index: 100000;">
@@ -652,6 +659,7 @@
         const searchResults_ = document.getElementById('searchResults');
         const searchInput_ = document.getElementById('searchInput');
         const demoContainer = document.getElementById('demo-container');
+        const demo = document.getElementById('demo');
 
         lightsToggle.addEventListener('change', function () {
             if (this.checked) {
@@ -662,6 +670,8 @@
                 searchInput_.classList.remove('search-input-dark');
                 searchInput_.classList.add('search-input');
                 demoContainer.classList.remove('fade-in');
+                demo.classList.remove('demo-dark');
+                demo.classList.add('demo-light');
                 void demoContainer.offsetWidth;
 
 
@@ -674,6 +684,8 @@
                 searchInput_.classList.add('search-input-dark');
                 void demoContainer.offsetWidth;
                 demoContainer.classList.add('fade-in');
+                demo.classList.remove('demo-light');
+                demo.classList.add('demo-dark');
             }
         });
     </script>

@@ -1590,7 +1590,8 @@ label {
 .features-image {
     position: relative;
     margin-top: 64px;
-    margin-bottom: 112px
+    margin-bottom: 112px;
+    height: 500px;
 }
 
 .features-illustration {
@@ -1598,7 +1599,9 @@ label {
     top: -2%;
     left: 50%;
     transform: translateX(-50%);
-    max-width: 136%
+    width: 700px;
+    min-width: 700px;
+    max-width: 700px;
 }
 
 .features-box {
