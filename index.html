@@ -236,6 +236,51 @@
         .demo-dark {
             background: rgba(32, 45, 63, 0.9)
         }
+
+        .faq {
+            padding: 60px 0;
+        }
+
+        .faq-list {
+            margin-top: 30px;
+        }
+
+        .faq-item {
+            border-bottom: 1px solid #ccc;
+        }
+
+        .faq-question {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 20px 0;
+            cursor: pointer;
+        }
+
+        .faq-question h3 {
+            margin: 0;
+            font-size: 18px;
+        }
+
+        .faq-toggle {
+            font-size: 24px;
+            transition: transform 0.3s ease;
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+
+        .faq-item.active .faq-toggle {
+            transform: rotate(45deg);
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 500px;
+            /* Adjust the value as needed */
+        }
     </style>
 
 
@@ -265,7 +310,8 @@
                             <div class="container-sm">
                                 <h2 class="section-title mt-0">Better search, more sales</h2>
                                 <p class="section-paragraph">Our AI search improves user experience and requires no
-                                    integration.
+                                    tedious integration. It is time to drop traditional keyword search and adopt the
+                                    next-gen.
                                 </p>
                                 <div class="features-image">
                                     <div id="demo-container">
@@ -281,11 +327,8 @@
 
                                                 const searchQueries = [
                                                     'home office setup',
-
                                                     'toys for kids',
                                                     'outdoor camping gear',
-
-                                                    //                                                    'dry my basement',
                                                     'healthy snacks'
 
                                                 ];
@@ -570,6 +613,64 @@
                     </div>
                 </div>
             </section>
+            <section class="faq section">
+                <div class="container">
+                    <h2 class="section-title">Frequently Asked Questions</h2>
+                    <div class="faq-list">
+                        <div class="faq-item">
+                            <div class="faq-question">
+                                <h3>What makes Magifind's search better than a standard search bar?</h3>
+                                <span class="faq-toggle">+</span>
+                            </div>
+                            <div class="faq-answer">
+                                <p>Magifind uses advanced AI and natural language processing to truly understand the
+                                    intent behind a customer's search, not just match keywords. This semantic search
+                                    approach allows Magifind to return highly relevant results, guiding customers to the
+                                    exact products they are looking for faster.</p>
+                            </div>
+                        </div>
+
+                        <div class="faq-item">
+                            <div class="faq-question">
+                                <h3>How does Magifind improve product discoverability?</h3>
+                                <span class="faq-toggle">+</span>
+                            </div>
+                            <div class="faq-answer">
+                                <p>Magifind's autonomous web crawlers constantly index every product on your site,
+                                    extracting rich information to make each item easily discoverable through search.
+                                    With Magifind, customers can find even long-tail or niche products that might have
+                                    been buried on a standard e-commerce site.</p>
+                            </div>
+                        </div>
+
+                        <div class="faq-item">
+                            <div class="faq-question">
+                                <h3>How easy is it to integrate Magifind into my e-commerce platform?</h3>
+                                <span class="faq-toggle">+</span>
+                            </div>
+                            <div class="faq-answer">
+                                <p>Integrating Magifind is designed to be quick and painless. Our system works with all
+                                    major e-commerce platforms and can be up and running on your site in a matter of
+                                    minutes. Simply insert our code snippet and let Magifind start working its magic -
+                                    no complex configuration required.</p>
+                            </div>
+                        </div>
+
+                        <div class="faq-item">
+                            <div class="faq-question">
+                                <h3>How can Magifind help increase conversions and revenue?</h3>
+                                <span class="faq-toggle">+</span>
+                            </div>
+                            <div class="faq-answer">
+                                <p>By connecting customers with the products they want effortlessly, Magifind reduces
+                                    friction in the buyer journey that can lead to abandoned carts. Magifind maximizes
+                                    product exposure and improves the overall user experience, which translates into
+                                    higher conversion rates, average order values, and revenue for your business.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
             <script>
                 document.getElementById('cta-form').addEventListener('submit', function (e) {
                     e.preventDefault();
@@ -600,15 +701,12 @@
                             <a href="#">Terms and Conditions</a>
                         </li>
                         <li>
-                            <a href="#">FAQ's</a>
-                        </li>
-                        <li>
                             <a href="#">About Us</a>
                         </li>
                     </ul>
                     <ul class="footer-social-links list-reset">
                         <li>
-                            <a href="mailto:mail@magifind.app">
+                            <a href="mailto:mail@magifind.com">
                                 <span class="screen-reader-text">Mail</span>
                                 <svg width="16" height="16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
                                     fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
@@ -621,7 +719,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="https://github.com/magifindapp/crm" target="_blank">
+                            <a href="https://github.com/magifind" target="_blank">
                                 <span class="screen-reader-text">GitHub</span>
                                 <svg width="16" height="16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
                                     fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
@@ -645,7 +743,7 @@
                                 </svg> </a>
                         </li>
                     </ul>
-                    <div class="footer-copyright">© 2024 magifind AI search, all rights reserved</div>
+                    <div class="footer-copyright">© 2024 magifind, all rights reserved</div>
                 </div>
             </div>
         </footer>
@@ -687,6 +785,18 @@
                 demo.classList.remove('demo-light');
                 demo.classList.add('demo-dark');
             }
+        });
+
+
+        document.addEventListener('DOMContentLoaded', function () {
+            const faqItems = document.querySelectorAll('.faq-item');
+
+            faqItems.forEach(function (item) {
+                const question = item.querySelector('.faq-question');
+                question.addEventListener('click', function () {
+                    item.classList.toggle('active');
+                });
+            });
         });
     </script>
 </body>
