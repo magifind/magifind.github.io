@@ -21,7 +21,7 @@
         <div class="col-lg-4 mb-4">
             <div class="card h-100">
                 <div class="card-body text-center">
-                    <img src="dist/images/feature-01-light.svg" alt="Feature 01" class="mb-4" style="width: 80px;">
+                    <img src="/images/amazed.svg" class="mb-4" style="width: 160px;">
                     <h3 class="card-title">Enhance User Experience</h3>
                     <p class="card-text">Provide your customers with a superior search experience that understands their
                         intent and delivers accurate and relevant results.</p>
@@ -31,7 +31,7 @@
         <div class="col-lg-4 mb-4">
             <div class="card h-100">
                 <div class="card-body text-center">
-                    <img src="dist/images/feature-02-light.svg" alt="Feature 02" class="mb-4" style="width: 80px;">
+                    <img src="/images/rocket.svg" class="mb-4" style="width: 160px;">
                     <h3 class="card-title">Boost Conversions</h3>
                     <p class="card-text">Improve your online retail conversions by helping customers find the products
                         they're looking for quickly and easily.</p>
@@ -41,7 +41,7 @@
         <div class="col-lg-4 mb-4">
             <div class="card h-100">
                 <div class="card-body text-center">
-                    <img src="dist/images/feature-03-light.svg" alt="Feature 03" class="mb-4" style="width: 80px;">
+                    <img src="/images/automation.svg" class="mb-4" style="width: 160px;">
                     <h3 class="card-title">Works like magic</h3>
                     <p class="card-text">Zero integration, our fully autonomous crawlers index all the content you have.
                     </p>
@@ -53,8 +53,8 @@
 
 {% include('cta_form.html') %}
 
-<div class="container  mt-5 mb-5">
-    <h2 class="text-center mb-5">Frequently Asked Questions</h2>
+<div class="container  mt-5">
+    <h2 class="text-center mb-5">FAQ</h2>
     <div class="accordion" id="faqAccordion">
         {% for question in faq.questions %}
         <div class="accordion-item">
@@ -74,6 +74,7 @@
         </div>
         {% endfor %}
     </div>
+    <img src="/images/question.svg" style="width: 200px;">
 </div>
 
 {% endblock %}
