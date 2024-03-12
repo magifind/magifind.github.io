@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+
+<head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZNSK9Z87VM"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-ZNSK9Z87VM');
+    </script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>magifind - AI search</title>
+    <link href="https://fonts.googleapis.com/css?family=Heebo:400,700|IBM+Plex+Sans:600|Poppins:500" rel="stylesheet">
+    <link rel="stylesheet" href="/dist/css/style.css">
+    <script src="https://unpkg.com/scrollreveal@4.0.0/dist/scrollreveal.min.js"></script>
+    <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="48x48" href="/images/favicon-48x48.png">
+    <link rel="icon" type="image/png" sizes="64x64" href="/images/favicon-64x64.png">
+    <link rel="icon" type="image/png" sizes="128x128" href="/images/favicon-128x128.png">
+    <link rel="icon" type="image/png" sizes="256x256" href="/images/favicon-256x256.png">
+    <style>
+        .header-brand h1 a {
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .lights-toggle {
+            position: absolute;
+            right: 15px;
+            top: 15px;
+        }
+
+        .cta-form input[type="email"] {
+            padding: 12px 20px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 16px;
+            width: 65%;
+            box-sizing: border-box;
+            margin-bottom: 20px;
+            transition: border-color 0.3s ease;
+        }
+
+        .cta-form input[type="email"]:focus {
+            outline: none;
+            border-color: #007bff;
+        }
+
+        .cta-form .button {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 12px 24px;
+            font-size: 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .cta-form .button:hover {
+            background-color: #0056b3;
+        }
+
+        .magifind-text-dark {
+            font-family: 'Poppins', sans-serif;
+            font-size: 30px;
+            margin-left: 15px;
+            margin-top: 15px
+        }
+
+        .magifind-text {
+            font-family: 'Poppins', sans-serif;
+            font-size: 30px;
+            margin-left: 15px;
+            margin-top: 15px
+        }
+
+        .search-results {
+            padding: 10px;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-gap: 20px;
+        }
+
+        .search-results div {
+            padding: 10px;
+            background-color: #f5f5f5;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            min-width: 40px;
+        }
+
+        .search-results img {
+            width: 100%;
+            height: auto;
+            margin-bottom: 10px;
+        }
+
+        .search-results h3 {
+            margin-top: 0;
+            color: #333;
+            font-weight: bold;
+            font-size: clamp(13px, 1.5vw, 20px);
+            line-height: 1.2em;
+            word-wrap: break-word;
+        }
+
+        .search-results p {
+            margin-bottom: 2px;
+        }
+
+        .search-results .price {
+            display: inline-block;
+            margin-right: 10px;
+            font-size: 0.8em;
+        }
+
+        .search-results .rating {
+            display: inline-block;
+        }
+
+        .search-results .buy-now {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+
+
+
+        .search-results-dark {
+            margin-top: 10px;
+            padding: 10px;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-gap: 20px;
+        }
+
+        .search-results-dark div {
+            padding: 10px;
+            background-color: #333;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        .search-results-dark img {
+            width: 100%;
+            height: auto;
+            margin-bottom: 10px;
+        }
+
+        .search-results-dark h3 {
+            margin-top: 0;
+            color: #333;
+            font-weight: bold;
+            font-size: clamp(13px, 1.5vw, 20px);
+            line-height: 1.2em;
+            word-wrap: break-word;
+        }
+
+        .search-results-dark p {
+            margin-bottom: 5px;
+        }
+
+
+        @keyframes pop {
+            0% {
+                transform: scale(0);
+            }
+
+            80% {
+                transform: scale(1.1);
+            }
+
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+
+        .search-input-dark {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #333;
+            color: #fff;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+
+        .container {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .container>* {
+            flex: 1;
+        }
+
+        #demo-container {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+            z-index: 10000;
+
+
+            animation: fadeUpBox 1s 0.2s both cubic-bezier(0.3, 0, 0.2, 1);
+            will-change: transform
+        }
+
+        #demo {
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            width: 100%;
+            max-width: 550px;
+            padding: 20px;
+            text-align: center;
+            position: absolute;
+            top: 0px;
+            height: 360px;
+            left: auto;
+            right: auto;
+            transform: perspective(1000px) rotate3d(0, 1, 0, 10deg) translateY(2%);
+        }
+
+        .demo-light {
+            background: rgba(255, 255, 255, 0.9);
+        }
+
+        .demo-dark {
+            background: rgba(32, 45, 63, 0.9)
+        }
+
+        .faq {
+            padding: 60px 0;
+        }
+
+        .faq-list {
+            margin-top: 30px;
+        }
+
+        .faq-item {
+            border-bottom: 1px solid #ccc;
+        }
+
+        .faq-question {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 20px 0;
+            cursor: pointer;
+        }
+
+        .faq-question h3 {
+            margin: 0;
+            font-size: 18px;
+        }
+
+        .faq-toggle {
+            font-size: 24px;
+            transition: transform 0.3s ease;
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+
+        .faq-item.active .faq-toggle {
+            transform: rotate(45deg);
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 500px;
+            /* Adjust the value as needed */
+        }
+    </style>
+
+
+</head>
+
+<body class="is-boxed has-animations">
+    <img id="pxl" />
+    <script>
+        document.addEventListener("DOMContentLoaded", t => { var e, a = encodeURIComponent(window.location.href); document.getElementById("pxl").src = "https://link.datatalk.app/1.png?url=" + a });
+    </script>
+    <div class="body-wrap boxed-container">
+        {% include 'header.html' %}
+
+        <main>
+
+            {% block content %}
+            {% endblock %}
+
+        </main>
+        {% include 'footer.html' %}
+
+    </div>
+    <script>
+        !function () { const e = document, t = e.documentElement, n = e.body, i = e.getElementById("lights-toggle"), s = window.sr = ScrollReveal(); function a() { let e = i.parentNode.querySelector(".label-text"); i.checked ? (n.classList.remove("lights-off"), e && (e.innerHTML = "dark")) : (n.classList.add("lights-off"), e && (e.innerHTML = "light")) } t.classList.remove("no-js"), t.classList.add("js"), window.addEventListener("load", function () { n.classList.add("is-loaded") }), n.classList.contains("has-animations") && window.addEventListener("load", function () { s.reveal(".feature", { duration: 600, distance: "20px", easing: "cubic-bezier(0.215, 0.61, 0.355, 1)", origin: "right", viewFactor: .2 }) }), i && (window.addEventListener("load", a), i.addEventListener("change", a)) }();
+    </script>
+    <script>
+        const lightsToggle = document.getElementById('lights-toggle');
+        const magifindText = document.getElementById('magifind-text');
+        const searchResults_ = document.getElementById('searchResults');
+        const searchInput_ = document.getElementById('searchInput');
+        const demoContainer = document.getElementById('demo-container');
+        const demo = document.getElementById('demo');
+
+        lightsToggle.addEventListener('change', function () {
+            if (this.checked) {
+                magifindText.classList.remove('magifind-text-dark');
+                magifindText.classList.add('magifind-text');
+                searchResults_.classList.remove('search-results-dark');
+                searchResults_.classList.add('search-results');
+                searchInput_.classList.remove('search-input-dark');
+                searchInput_.classList.add('search-input');
+                demoContainer.classList.remove('fade-in');
+                demo.classList.remove('demo-dark');
+                demo.classList.add('demo-light');
+                void demoContainer.offsetWidth;
+
+
+            } else {
+                magifindText.classList.remove('magifind-text');
+                magifindText.classList.add('magifind-text-dark');
+                searchResults_.classList.remove('search-results');
+                searchResults_.classList.add('search-results-dark');
+                searchInput_.classList.remove('search-input');
+                searchInput_.classList.add('search-input-dark');
+                void demoContainer.offsetWidth;
+                demoContainer.classList.add('fade-in');
+                demo.classList.remove('demo-light');
+                demo.classList.add('demo-dark');
+            }
+        });
+
+
+        document.addEventListener('DOMContentLoaded', function () {
+            const faqItems = document.querySelectorAll('.faq-item');
+
+            faqItems.forEach(function (item) {
+                const question = item.querySelector('.faq-question');
+                question.addEventListener('click', function () {
+                    item.classList.toggle('active');
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>

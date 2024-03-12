@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block content %}
+<section class="container-fluid py-5 bg-secondary text-white text-center">
+    <h2 class="fw-bold">Blog</h2>
+</section>
+<section class="container py-5">
+    <div class="row">
+
+        {% for post in blog.posts %}
+        <div class="col-md-4 mb-4">
+            <div class="card">
+                <img src="./{{post.slug}}/{{post.image}}" class="card-img-top" alt="Blog Post Image">
+                <div class="card-body">
+                    <h5 class="card-title">{{ post.title }}</h5>
+                    <p class="card-text">{{ post.short }}</p>
+                    <a href="./{{post.slug}}" class="btn btn-primary">Read More</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+
+    </div>
+</section>
+{% endblock %}
