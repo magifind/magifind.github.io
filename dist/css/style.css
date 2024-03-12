@@ -2096,3 +2096,276 @@ hr::after,
     animation: fadeIn 1s 0.2s both cubic-bezier(0.3, 0, 0.2, 1);
     will-change: transform
 }
+
+
+.header-brand h1 a {
+    font-family: 'Poppins', sans-serif;
+}
+
+.lights-toggle {
+    position: absolute;
+    right: 15px;
+    top: 15px;
+}
+
+.cta-form input[type="email"] {
+    padding: 12px 20px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    width: 65%;
+    box-sizing: border-box;
+    margin-bottom: 20px;
+    transition: border-color 0.3s ease;
+}
+
+.cta-form input[type="email"]:focus {
+    outline: none;
+    border-color: #007bff;
+}
+
+.cta-form .button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 12px 24px;
+    font-size: 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.cta-form .button:hover {
+    background-color: #0056b3;
+}
+
+.magifind-text-dark {
+    font-family: 'Poppins', sans-serif;
+    font-size: 30px;
+    margin-left: 15px;
+    margin-top: 15px
+}
+
+.magifind-text {
+    font-family: 'Poppins', sans-serif;
+    font-size: 30px;
+    margin-left: 15px;
+    margin-top: 15px
+}
+
+.search-results {
+    padding: 10px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 20px;
+}
+
+.search-results div {
+    padding: 10px;
+    background-color: #f5f5f5;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    min-width: 40px;
+}
+
+.search-results img {
+    width: 100%;
+    height: auto;
+    margin-bottom: 10px;
+}
+
+.search-results h3 {
+    margin-top: 0;
+    color: #333;
+    font-weight: bold;
+    font-size: clamp(13px, 1.5vw, 20px);
+    line-height: 1.2em;
+    word-wrap: break-word;
+}
+
+.search-results p {
+    margin-bottom: 2px;
+}
+
+.search-results .price {
+    display: inline-block;
+    margin-right: 10px;
+    font-size: 0.8em;
+}
+
+.search-results .rating {
+    display: inline-block;
+}
+
+.search-results .buy-now {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: #4CAF50;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+
+
+
+.search-results-dark {
+    margin-top: 10px;
+    padding: 10px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 20px;
+}
+
+.search-results-dark div {
+    padding: 10px;
+    background-color: #333;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.search-results-dark img {
+    width: 100%;
+    height: auto;
+    margin-bottom: 10px;
+}
+
+.search-results-dark h3 {
+    margin-top: 0;
+    color: #333;
+    font-weight: bold;
+    font-size: clamp(13px, 1.5vw, 20px);
+    line-height: 1.2em;
+    word-wrap: break-word;
+}
+
+.search-results-dark p {
+    margin-bottom: 5px;
+}
+
+
+@keyframes pop {
+    0% {
+        transform: scale(0);
+    }
+
+    80% {
+        transform: scale(1.1);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+.search-input {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+.search-input-dark {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #333;
+    color: #fff;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+.container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.container>* {
+    flex: 1;
+}
+
+#demo-container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    z-index: 10000;
+
+
+    animation: fadeUpBox 1s 0.2s both cubic-bezier(0.3, 0, 0.2, 1);
+    will-change: transform
+}
+
+#demo {
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    max-width: 550px;
+    padding: 20px;
+    text-align: center;
+    position: absolute;
+    top: 0px;
+    height: 360px;
+    left: auto;
+    right: auto;
+    transform: perspective(1000px) rotate3d(0, 1, 0, 10deg) translateY(2%);
+}
+
+.demo-light {
+    background: rgba(255, 255, 255, 0.9);
+}
+
+.demo-dark {
+    background: rgba(32, 45, 63, 0.9)
+}
+
+.faq {
+    padding: 60px 0;
+}
+
+.faq-list {
+    margin-top: 30px;
+}
+
+.faq-item {
+    border-bottom: 1px solid #ccc;
+}
+
+.faq-question {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 0;
+    cursor: pointer;
+}
+
+.faq-question h3 {
+    margin: 0;
+    font-size: 18px;
+}
+
+.faq-toggle {
+    font-size: 24px;
+    transition: transform 0.3s ease;
+}
+
+.faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+}
+
+.faq-item.active .faq-toggle {
+    transform: rotate(45deg);
+}
+
+.faq-item.active .faq-answer {
+    max-height: 500px;
+    /* Adjust the value as needed */
+}
