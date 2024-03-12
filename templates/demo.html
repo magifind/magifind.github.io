@@ -1,0 +1,162 @@
+<div class="container mt-5 mb-5 card">
+    <div class="m-3">
+        <div class="input-group">
+            <input id="searchInput" type="text" class="form-control form-control-lg" placeholder="Search..." disabled>
+            <button class="btn btn-primary" type="button" disabled><i class="bi bi-search"></i></button>
+        </div>
+    </div>
+    <div id="searchResults" style="min-height: 250px;" class="row p-3">
+    </div>
+</div>
+<style>
+    @keyframes pop {
+        0% {
+            transform: scale(0);
+        }
+
+        80% {
+            transform: scale(1.1);
+        }
+
+        100% {
+            transform: scale(1);
+        }
+    }
+</style>
+<script>
+    const searchInput = document.getElementById('searchInput');
+    const searchResults = document.getElementById('searchResults');
+    const searchQueries = [
+        'home office setup',
+        'toys for kids',
+        'outdoor camping gear',
+        'healthy snacks'
+    ];
+    const searchResultsData = {
+        'toys for kids': [
+            {
+                name: 'Interactive Talking Teddy Bear',
+                image: 'talking-teddy-bear.webp'
+            },
+            {
+                name: 'Remote Control Racing Car',
+                image: 'rc-racing-car.webp'
+            },
+            {
+                name: 'Educational Building Blocks Set',
+                image: 'building-blocks.webp'
+            }
+        ],
+        'dry my basement': [
+            {
+                name: 'PowerDry Pro Dehumidifier',
+                image: 'dehumidifier.webp'
+            },
+            {
+                name: 'HydroFlow Submersible Water Pump',
+                image: 'water-pump.webp'
+            },
+            {
+                name: 'Sand Bags',
+                image: 'desiccant-packs.webp'
+            }
+        ],
+        'outdoor camping gear': [
+            {
+                name: 'Adventurer 4-Person Tent',
+                image: 'camping-tent.webp'
+            },
+            {
+                name: 'TrailChef Portable Camping Stove',
+                image: 'camping-stove.webp'
+            },
+            {
+                name: 'Insulated Sleeping Bag',
+                image: 'sleeping-bag.webp'
+            }
+        ],
+        'healthy snacks': [
+            {
+                name: 'Organic Fruit and Nut Granola Bars',
+                image: 'granola-bars.webp'
+            },
+            {
+                name: 'Baked Veggie Chips Variety Pack',
+                image: 'veggie-chips.webp'
+            },
+            {
+                name: 'Dried Fruit and Nut Mix',
+                image: 'dried-fruit-mix.webp'
+            }
+        ],
+        'home office setup': [
+            {
+                name: 'Ergonomic Office Chair',
+                image: 'office-chair.webp'
+            },
+            {
+                name: 'Adjustable Standing Desk',
+                image: 'standing-desk.webp'
+            },
+            {
+                name: 'Noise-Cancelling Headphones',
+                image: 'noise-cancelling-headphones.webp'
+            }
+        ]
+    };
+
+    let currentQueryIndex = 0;
+    let currentQuery = '';
+    let currentLetterIndex = 0;
+
+    function typeQuery() {
+        if (currentLetterIndex < searchQueries[currentQueryIndex].length) {
+            currentQuery += searchQueries[currentQueryIndex][currentLetterIndex];
+            searchInput.value = currentQuery;
+            currentLetterIndex++;
+            setTimeout(typeQuery, 50);
+        } else {
+            displaySearchResults();
+            setTimeout(nextQuery, 3500);
+        }
+
+    }
+
+    function nextQuery() {
+        currentQueryIndex = (currentQueryIndex + 1) % searchQueries.length;
+        currentQuery = '';
+        currentLetterIndex = 0;
+        searchInput.value = '';
+        searchResults.innerHTML = '';
+        typeQuery();
+    }
+
+    function displaySearchResults() {
+        const query = searchInput.value;
+        const lowercaseQuery = query.toLowerCase();
+        const matchingKey = Object.keys(searchResultsData).find(key => key.toLowerCase() === lowercaseQuery);
+
+        if (matchingKey) {
+            const products = searchResultsData[matchingKey];
+            let resultsHTML = '';
+
+            products.forEach((product, index) => {
+                resultsHTML += `
+                <div class="col-lg-4 mb-4" style="transform: scale(1); animation: pop 0.5s ease-in-out;">
+                    <div class="card text-black bg-light h-100">
+                        <div class="card-body text-center">
+                            <img src="dist/images/${product.image}" alt="${product.name}" class="mb-4" style="width: 80px;">
+                            <h3 class="card-title">${product.name}</h3>
+                        </div>
+                    </div>
+                </div>
+    `;
+            });
+
+            searchResults.innerHTML = resultsHTML;
+        } else {
+            searchResults.innerHTML = '<p>No results found.</p>';
+        }
+    }
+    typeQuery();
+</script>

@@ -1,0 +1,35 @@
+<div class="container-fluid" id="cta">
+    <div class="row justify-content-center">
+        <div class="col-lg-8 text-center m-5">
+            <h2 class="mb-4">Get started with Magifind</h2>
+            <p class="lead mb-4">Elevate your online retail search experience and drive conversions.</p>
+            <div class="row justify-content-center">
+                <div class="col-lg-6">
+                    <form id="cta-form" action="https://link.datatalk.app/subscribe" method="POST">
+                        <div class="input-group">
+                            <input type="email" class="form-control form-control-lg" id="email" name="email"
+                                placeholder="Enter your email here" required>
+                            <input type="hidden" name="ref" value="aisearch">
+                            <button type="submit" class="btn btn-primary btn-lg">Try Now</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div id="success-message" class="mt-4 alert alert-success" style="display: none;">
+                <p class="mb-0">Thank you for your interest! We'll be in touch soon.</p>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    document.getElementById('cta-form').addEventListener('submit', function (e) {
+        e.preventDefault();
+        var email = document.getElementById('email').value;
+        var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (emailRegex.test(email)) {
+            this.submit();
+        } else {
+            alert('Please enter a valid email address.');
+        }
+    });
+</script>

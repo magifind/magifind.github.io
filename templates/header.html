@@ -1,14 +1,28 @@
-<header class="site-header">
+<nav class="navbar navbar-expand-lg navbar-light fixed-top">
     <div class="container">
-        <div class="site-header-inner">
-            <div class="brand header-brand">
-                <div id="magifind-text" class="magifind-text">magifind</div>
-            </div>
-            <div class="lights-toggle">
-                <input id="lights-toggle" type="checkbox" name="lights-toggle" class="switch" checked="checked">
-                <label for="lights-toggle" class="text-xs"><span>Turn me <span
-                            class="label-text">dark</span></span></label>
-            </div>
+        <div class="col">
+            <img src="/images/logo.svg" style="margin-right: 5px" width="30">
+            <a class="navbar-brand" href="#">
+                magifind
+            </a>
+        </div>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="/">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/#features">Features</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="mailto:mail@magifind.com">Contact</a>
+                </li>
+            </ul>
+            <a href="/#cta" class="btn btn-primary ms-3">Try now</a>
         </div>
     </div>
-</header>
+</nav>

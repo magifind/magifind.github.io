@@ -1,377 +1,79 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<section class="features section">
-    <div class="container">
-        <div class="features-inner section-inner has-bottom-divider">
-            <div class="features-header text-center">
-                <div class="container-sm">
-                    <h2 class="section-title mt-0">Better search, more sales</h2>
-                    <p class="section-paragraph">Our AI search improves user experience and requires no
-                        tedious integration. It is time to drop traditional keyword search and adopt the
-                        next-gen.
+<div class="container mt-5 mb-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-8 text-center">
+            <h1 class="display-4 mb-4 mt-4">Better search, more sales</h1>
+            <p class="lead mb-5">Our AI search improves user experience and requires no tedious integration. It is time
+                to drop traditional keyword search and adopt the next-gen.</p>
+            <a href="#cta" class="btn btn-primary btn-lg mb-5">Get started now</a>
+
+        </div>
+    </div>
+</div>
+
+{% include('demo.html') %}
+
+<div class="container mt-5 mb-5">
+    <div class="row text-center">
+        <h2 class="mb-4" id="features">Discover what we have to offer</h2>
+        <div class="col-lg-4 mb-4">
+            <div class="card h-100">
+                <div class="card-body text-center">
+                    <img src="dist/images/feature-01-light.svg" alt="Feature 01" class="mb-4" style="width: 80px;">
+                    <h3 class="card-title">Enhance User Experience</h3>
+                    <p class="card-text">Provide your customers with a superior search experience that understands their
+                        intent and delivers accurate and relevant results.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4 mb-4">
+            <div class="card h-100">
+                <div class="card-body text-center">
+                    <img src="dist/images/feature-02-light.svg" alt="Feature 02" class="mb-4" style="width: 80px;">
+                    <h3 class="card-title">Boost Conversions</h3>
+                    <p class="card-text">Improve your online retail conversions by helping customers find the products
+                        they're looking for quickly and easily.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4 mb-4">
+            <div class="card h-100">
+                <div class="card-body text-center">
+                    <img src="dist/images/feature-03-light.svg" alt="Feature 03" class="mb-4" style="width: 80px;">
+                    <h3 class="card-title">Works like magic</h3>
+                    <p class="card-text">Zero integration, our fully autonomous crawlers index all the content you have.
                     </p>
-                    <a href="#get-started" class="button button-primary">Get started now</a>
-
-                    <div class="features-image">
-                        <div id="demo-container">
-                            <div id="demo" class="demo-light">
-                                <input type="text" id="searchInput" class="search-input" disabled>
-                                <div id="searchResults" class="search-results"></div>
-
-                                <script>
-
-                                    const searchInput = document.getElementById('searchInput');
-
-                                    const searchResults = document.getElementById('searchResults');
-
-                                    const searchQueries = [
-                                        'home office setup',
-                                        'toys for kids',
-                                        'outdoor camping gear',
-                                        'healthy snacks'
-
-                                    ];
-
-                                    const searchResultsData = {
-                                        'toys for kids': [
-
-                                            {
-                                                name: 'Interactive Talking Teddy Bear',
-                                                price: 39.99,
-                                                rating: 4.5,
-                                                image: 'talking-teddy-bear.webp'
-                                            },
-                                            {
-                                                name: 'Remote Control Racing Car',
-                                                price: 49.99,
-                                                rating: 4.6,
-                                                image: 'rc-racing-car.webp'
-                                            },
-                                            {
-                                                name: 'Educational Building Blocks Set',
-                                                price: 29.99,
-                                                rating: 4.7,
-                                                image: 'building-blocks.webp'
-                                            }
-                                        ],
-                                        'dry my basement': [
-                                            {
-                                                name: 'PowerDry Pro Dehumidifier',
-                                                price: 249.99,
-                                                rating: 4.8,
-                                                image: 'dehumidifier.webp'
-                                            },
-                                            {
-                                                name: 'HydroFlow Submersible Water Pump',
-                                                price: 149.99,
-                                                rating: 4.6,
-                                                image: 'water-pump.webp'
-                                            },
-                                            {
-                                                name: 'Sand Bags',
-                                                price: 19.99,
-                                                rating: 4.3,
-                                                image: 'desiccant-packs.webp'
-                                            }
-                                        ],
-                                        'outdoor camping gear': [
-                                            {
-                                                name: 'Adventurer 4-Person Tent',
-                                                price: 129.99,
-                                                rating: 4.7,
-                                                image: 'camping-tent.webp'
-                                            },
-                                            {
-                                                name: 'TrailChef Portable Camping Stove',
-                                                price: 79.99,
-                                                rating: 4.5,
-                                                image: 'camping-stove.webp'
-                                            },
-                                            {
-                                                name: 'Insulated Sleeping Bag',
-                                                price: 89.99,
-                                                rating: 4.6,
-                                                image: 'sleeping-bag.webp'
-                                            }
-                                        ],
-                                        'healthy snacks': [
-                                            {
-                                                name: 'Organic Fruit and Nut Granola Bars',
-                                                price: 12.99,
-                                                rating: 4.6,
-                                                image: 'granola-bars.webp'
-                                            },
-                                            {
-                                                name: 'Baked Veggie Chips Variety Pack',
-                                                price: 9.99,
-                                                rating: 4.4,
-                                                image: 'veggie-chips.webp'
-                                            },
-                                            {
-                                                name: 'Dried Fruit and Nut Mix',
-                                                price: 8.99,
-                                                rating: 4.5,
-                                                image: 'dried-fruit-mix.webp'
-                                            }
-                                        ],
-                                        'home office setup': [
-                                            {
-                                                name: 'Ergonomic Office Chair',
-                                                price: 199.99,
-                                                rating: 4.8,
-                                                image: 'office-chair.webp'
-                                            },
-                                            {
-                                                name: 'Adjustable Standing Desk',
-                                                price: 299.99,
-                                                rating: 4.7,
-                                                image: 'standing-desk.webp'
-                                            },
-                                            {
-                                                name: 'Noise-Cancelling Headphones',
-                                                price: 149.99,
-                                                rating: 4.6,
-                                                image: 'noise-cancelling-headphones.webp'
-                                            }
-                                        ]
-                                    };
-
-                                    let currentQueryIndex = 0;
-
-                                    let currentQuery = '';
-
-                                    let currentLetterIndex = 0;
-
-                                    function typeQuery() {
-
-                                        if (currentLetterIndex < searchQueries[currentQueryIndex].length) {
-
-                                            currentQuery += searchQueries[currentQueryIndex][currentLetterIndex];
-
-                                            searchInput.value = currentQuery;
-
-                                            currentLetterIndex++;
-
-                                            setTimeout(typeQuery, 50);
-
-                                        } else {
-
-                                            displaySearchResults();
-
-                                            setTimeout(nextQuery, 3500);
-
-                                        }
-
-                                    }
-
-                                    function nextQuery() {
-
-                                        currentQueryIndex = (currentQueryIndex + 1) % searchQueries.length;
-
-                                        currentQuery = '';
-
-                                        currentLetterIndex = 0;
-
-                                        searchInput.value = '';
-
-                                        searchResults.innerHTML = '';
-
-                                        typeQuery();
-
-                                    }
-
-                                    function displaySearchResults() {
-                                        const query = searchInput.value;
-                                        const lowercaseQuery = query.toLowerCase();
-                                        const matchingKey = Object.keys(searchResultsData).find(key => key.toLowerCase() === lowercaseQuery);
-
-                                        if (matchingKey) {
-                                            const products = searchResultsData[matchingKey];
-                                            let resultsHTML = '';
-
-                                            products.forEach((product, index) => {
-                                                resultsHTML += `
-                                      <div style="opacity: 0; transform: scale(0);">
-                                        <img src="./dist/images/${product.image}" alt="${product.name}">
-                                        <h3>${product.name}</h3>
-                                      </div>
-                                    `;
-                                            });
-
-                                            searchResults.innerHTML = resultsHTML;
-
-                                            const resultElements = searchResults.querySelectorAll('div');
-                                            resultElements.forEach((element, index) => {
-                                                setTimeout(() => {
-                                                    element.style.opacity = '1';
-                                                    element.style.transform = 'scale(1)';
-                                                    element.style.animation = 'pop 0.5s ease-in-out';
-                                                }, index * 200);
-                                            });
-                                        } else {
-                                            searchResults.innerHTML = '<p>No results found.</p>';
-                                        }
-                                    }
-                                    typeQuery();
-                                </script>
-
-                            </div>
-                        </div>
-                        <img class="features-illustration asset-dark" src="dist/images/features-illustration-dark.svg"
-                            alt="Feature illustration">
-                        <img class="features-illustration asset-dark"
-                            src="dist/images/features-illustration-top-dark.svg" style="z-index: 100000;"
-                            alt="Feature illustration top">
-                        <img class="features-illustration asset-light" src="dist/images/features-illustration-light.svg"
-                            alt="Feature illustration">
-                        <img class="features-illustration asset-light"
-                            src="dist/images/features-illustration-top-light.svg" alt="Feature illustration top"
-                            style="z-index: 100000;">
-                    </div>
-                </div>
-            </div>
-            <div class="features-wrap">
-                <div class="feature is-revealing">
-                    <div class="feature-inner">
-                        <div class="feature-icon">
-                            <img class="asset-light" src="dist/images/feature-01-light.svg" alt="Feature 01">
-                            <img class="asset-dark" src="dist/images/feature-01-dark.svg" alt="Feature 01">
-                        </div>
-                        <div class="feature-content">
-                            <h3 class="feature-title mt-0">Enhance User Experience</h3>
-                            <p class="text-sm mb-0">Provide your customers with a superior search experience
-                                that understands their intent and delivers accurate and relevant results.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                <div class="feature is-revealing">
-                    <div class="feature-inner">
-                        <div class="feature-icon">
-                            <img class="asset-light" src="dist/images/feature-02-light.svg" alt="Feature 02">
-                            <img class="asset-dark" src="dist/images/feature-02-dark.svg" alt="Feature 02">
-                        </div>
-                        <div class="feature-content">
-                            <h3 class="feature-title mt-0">Boost Conversions</h3>
-                            <p class="text-sm mb-0">Improve your online retail conversions by helping
-                                customers find the products they're looking for quickly and easily.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="feature is-revealing">
-                    <div class="feature-inner">
-                        <div class="feature-icon">
-                            <img class="asset-light" src="dist/images/feature-03-light.svg" alt="Feature 03">
-                            <img class="asset-dark" src="dist/images/feature-03-dark.svg" alt="Feature 03">
-                        </div>
-                        <div class="feature-content">
-                            <h3 class="feature-title mt-0">Works like magic </h3>
-                            <p class="text-sm mb-0">Zero integration, our fully autonomous crawlers index
-                                all the content you have.</p>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>
     </div>
-</section>
-<section class="cta section">
-    <div class="container-sm">
-        <div class="cta-inner section-inner">
-            <div class="cta-header text-center">
-                <h2 class="section-title mt-0">Get started with <span style="color: #999">magifind</span>
-                </h2>
-                <p class="section-paragraph" id="get-started">Elevate your online retail search experience
-                    and drive
-                    conversions.</p>
-                <form id="cta-form" class="cta-form" action="https://link.datatalk.app/subscribe" method="POST">
-                    <div class="form-group">
-                        <input type="email" id="email" name="email" placeholder="Enter your email here" required>
-                    </div>
-                    <div class="form-group">
-                        <input type="hidden" name="ref" value="aisearch">
-                    </div>
-                    <div class="form-group">
-                        <button type="submit" class="button button-primary">Try Now</button>
-                    </div>
-                </form>
-                <div id="success-message" class="success-message" style="display: none;">
-                    <p>Thank you for your interest! We'll be in touch soon.</p>
+</div>
+
+{% include('cta_form.html') %}
+
+<div class="container  mt-5 mb-5">
+    <h2 class="text-center mb-5">Frequently Asked Questions</h2>
+    <div class="accordion" id="faqAccordion">
+        {% for question in faq.questions %}
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="heading{{ loop.index }}">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#collapse{{ loop.index }}" aria-expanded="false"
+                    aria-controls="collapse{{ loop.index }}">
+                    {{ question.question }}
+                </button>
+            </h2>
+            <div id="collapse{{ loop.index }}" class="accordion-collapse collapse"
+                aria-labelledby="heading{{ loop.index }}" data-bs-parent="#faqAccordion">
+                <div class="accordion-body">
+                    {{ question.answer }}
                 </div>
             </div>
         </div>
+        {% endfor %}
     </div>
-</section>
-<section class="faq section">
-    <div class="container">
-        <h2 class="section-title">Frequently Asked Questions</h2>
-        <div class="faq-list">
-            <div class="faq-item">
-                <div class="faq-question">
-                    <h3>What makes Magifind's search better than a standard search bar?</h3>
-                    <span class="faq-toggle">+</span>
-                </div>
-                <div class="faq-answer">
-                    <p>Magifind uses advanced AI and natural language processing to truly understand the
-                        intent behind a customer's search, not just match keywords. This semantic search
-                        approach allows Magifind to return highly relevant results, guiding customers to the
-                        exact products they are looking for faster.</p>
-                </div>
-            </div>
-
-            <div class="faq-item">
-                <div class="faq-question">
-                    <h3>How does Magifind improve product discoverability?</h3>
-                    <span class="faq-toggle">+</span>
-                </div>
-                <div class="faq-answer">
-                    <p>Magifind's autonomous web crawlers constantly index every product on your site,
-                        extracting rich information to make each item easily discoverable through search.
-                        With Magifind, customers can find even long-tail or niche products that might have
-                        been buried on a standard e-commerce site.</p>
-                </div>
-            </div>
-
-            <div class="faq-item">
-                <div class="faq-question">
-                    <h3>How easy is it to integrate Magifind into my e-commerce platform?</h3>
-                    <span class="faq-toggle">+</span>
-                </div>
-                <div class="faq-answer">
-                    <p>Integrating Magifind is designed to be quick and painless. Our system works with all
-                        major e-commerce platforms and can be up and running on your site in a matter of
-                        minutes. Simply insert our code snippet and let Magifind start working its magic -
-                        no complex configuration required.</p>
-                </div>
-            </div>
-
-            <div class="faq-item">
-                <div class="faq-question">
-                    <h3>How can Magifind help increase conversions and revenue?</h3>
-                    <span class="faq-toggle">+</span>
-                </div>
-                <div class="faq-answer">
-                    <p>By connecting customers with the products they want effortlessly, Magifind reduces
-                        friction in the buyer journey that can lead to abandoned carts. Magifind maximizes
-                        product exposure and improves the overall user experience, which translates into
-                        higher conversion rates, average order values, and revenue for your business.</p>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-<script>
-    document.getElementById('cta-form').addEventListener('submit', function (e) {
-        e.preventDefault();
-        var email = document.getElementById('email').value;
-        var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        if (emailRegex.test(email)) {
-            this.submit();
-        } else {
-            alert('Please enter a valid email address.');
-        }
-    });
-</script>
+</div>
 
 {% endblock %}
