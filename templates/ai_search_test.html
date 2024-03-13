@@ -1,0 +1,205 @@
+{% extends 'base.html' %}
+
+{% block body %}
+<style>
+    body {
+        background-color: #f8f9fa;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
+
+    .container {
+        max-width: 800px;
+    }
+
+    h1 {
+        text-align: center;
+        margin-bottom: 40px;
+    }
+
+    .question {
+        background-color: #fff;
+        border-radius: 5px;
+        padding: 20px;
+        margin-bottom: 20px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        text-align: center;
+        height: 400px;
+    }
+
+    .question p {
+        font-size: 24px;
+        font-weight: bold;
+        margin-bottom: 20px;
+    }
+
+    .form-check-label {
+        font-size: 18px;
+    }
+
+    .btn-primary {
+        width: 100%;
+    }
+
+    .btn-outline-primary {
+        color: #007bff;
+        border-color: #007bff;
+    }
+
+    .btn-outline-primary:hover {
+        color: #fff;
+        background-color: #007bff;
+        border-color: #007bff;
+    }
+
+    .btn-outline-secondary {
+        color: #6c757d;
+        border-color: #6c757d;
+    }
+
+    .btn-outline-secondary:hover {
+        color: #fff;
+        background-color: #6c757d;
+        border-color: #6c757d;
+    }
+
+    #score-result {
+        text-align: center;
+        font-size: 24px;
+        font-weight: bold;
+        color: #007bff;
+    }
+</style>
+<div class="container">
+    <h1>Magifind Website AI Search Test</h1>
+    <form id="questionnaire">
+        < !-- Questions will be dynamically added here -->
+    </form>
+    <div id="email-form" class="mt-4" style="display: none;">
+        <div class="mb-3"><label for="email" class="form-label">Enter your e-mail address to receive your
+                report:</label><input type="email" class="form-control" id="email" placeholder="Enter your email here">
+        </div><button type="button" class="btn btn-primary" id="get-score-btn">Get my score</button>
+    </div>
+    <div id="score-result" class="mt-4" style="display: none;"></div>
+</div>
+<script>
+    const questions = [
+        {
+            text: "Does your search provide your users \"as-you-type\" results (updating search results at every keystroke)?",
+            image: "search.svg"
+        },
+        {
+            text: "Are you able to provide relevant results even when users make spelling mistakes, use plurals or synonyms?",
+            image: "semantic-search.svg"
+        },
+        {
+            text: "Do you offer voice search with NLP (Natural Language Processing) or NLU (Natural Language Understanding)?",
+            image: "headphones.svg"
+        },
+        {
+            text: "Can you search all your content sources such as product catalog, content, blogs, resources, documentation or ecommerce SKUs?",
+            image: "search-world.svg"
+        },
+        {
+            text: "Does your search leverage AI to learn from users' behaviors and automatically suggest relevance improvements?",
+            image: "robot-2.svg"
+        },
+        {
+            text: "Are you able to personalize search results based on user preferences and behavior, without heavy reliance on developers/IT?",
+            image: "star.svg"
+        },
+        {
+            text: "Are you able to easily merchandize search results (e.g., promote products with the highest margin, or most popular articles)?",
+            image: "profit.svg"
+        },
+        {
+            text: "Can you easily A/B test different relevance strategies and tune your search results to maximize business outcomes?",
+            image: "chart.svg"
+        },
+        {
+            text: "Can you analyze search results with advanced analytics about clicks, conversions, events, performant queries, filter usage, etc.?",
+            image: "charts.svg"
+        },
+        {
+            text: "Does your search seamlessly match the branding of your site or app UI?",
+            image: "award.svg"
+        }
+    ];
+    const form = document.getElementById('questionnaire');
+    const emailForm = document.getElementById('email-form');
+    const scoreResult = document.getElementById('score-result');
+    const getScoreBtn = document.getElementById('get-score-btn');
+    let score = 0;
+    let currentQuestion = 0;
+    function showQuestion() {
+        form.innerHTML = '';
+        const questionDiv = document.createElement('div');
+        questionDiv.className = 'question';
+        questionDiv.innerHTML = `
+          <img src="/images/${questions[currentQuestion].image}" alt="Question Image" class="mb-3" style="max-width: 150px;">
+          <p>${questions[currentQuestion].text}</p>
+          <div class="d-flex justify-content-center">
+            <button type="button" class="btn btn-outline-primary me-3" id="q${currentQuestion}_yes">Yes</button>
+            <button type="button" class="btn btn-outline-secondary" id="q${currentQuestion}_no">No</button>
+          </div>
+        `;
+        form.appendChild(questionDiv);
+        const yesButton = document.getElementById(`q${currentQuestion}_yes`);
+        const noButton = document.getElementById(`q${currentQuestion}_no`);
+        yesButton.addEventListener('click', () => {
+            score++;
+            currentQuestion++;
+            if (currentQuestion < questions.length) {
+                showQuestion();
+            } else {
+                emailForm.style.display = 'block';
+            }
+        });
+        noButton.addEventListener('click', () => {
+            currentQuestion++;
+            if (currentQuestion < questions.length) {
+                showQuestion();
+            } else {
+                emailForm.style.display = 'block';
+            }
+        });
+    }
+    showQuestion();
+    getScoreBtn.addEventListener('click', () => {
+        const email = document.getElementById('email').value;
+        if (email) {
+            const xhr = new XMLHttpRequest();
+            xhr.open('POST', 'https://link.datatalk.app/subscribe');
+            xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+            xhr.onload = () => {
+                if (xhr.status === 200) {
+                    emailForm.style.display = 'none';
+                    scoreResult.innerHTML = `
+<p>Your AI Search Score: ${score}/10</p>
+<p>${getScoreMessage(score)}</p>
+`;
+                    scoreResult.style.display = 'block';
+                } else {
+                    alert('An error occurred. Please try again.');
+                }
+            };
+            xhr.send(`email=${encodeURIComponent(email)}&ref=aisearch_questionairre`);
+        } else {
+            alert('Please enter your email address.');
+        }
+    });
+    function getScoreMessage(score) {
+        if (score <= 3) {
+            return 'Your search capabilities need significant improvement. Consider upgrading your search technology.';
+        } else if (score <= 6) {
+            return 'Your search capabilities are average. There is room for improvement to enhance user experience and business outcomes.';
+        } else if (score <= 9) {
+            return 'Your search capabilities are good. You are on the right track, but there are still areas where you can optimize.';
+        } else {
+            return 'Congratulations! Your search capabilities are excellent. You are providing a top-notch search experience to your users.';
+        }
+    }
+</script>
+{% endblock %}

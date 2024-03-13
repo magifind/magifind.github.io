@@ -1,5 +1,6 @@
 - title: Add recommendations to any website or app
   slug: ai-recommendations
+  category: Solutions
   sections:
   - title: Personalized Recommendations for Delightful User Journeys
     paragraph: With Magifind's AI-powered recommendations, delight your users by suggesting the most relevant items and content at every step of their journey. Our advanced algorithms leverage behavioral cues to surface personalized recommendations that inspire undecided visitors and drive higher engagement, conversions, and revenue.
@@ -26,6 +27,7 @@
 
 - title: AI-Powered Recommendations that Boost Conversions
   slug: ai-powered-recommendations
+  category: Solutions
   sections:
   - title: Personalized Suggestions to Delight Your Users
     paragraph: Magifind uses advanced AI and behavioral data to provide highly relevant product recommendations and content suggestions at every step of the user journey. Increase engagement, cross-sells, and conversions with intelligent recommendations tailored to each user.
