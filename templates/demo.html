@@ -1,15 +1,37 @@
-<div class="container mt-5 mb-5 card position-relative" style="width: 60%;">
-    <img src="/images/girl_hanging_over_ledge.svg" class="position-absolute top-0 start-0"
-        style="transform: translateY(-135px); width: 150px;">
-    <div class="m-3">
+<div class="container mb-5 card position-relative" style="margin-top: 80px; max-width: 720px;     box-shadow: 0px 36px 89px rgb(0 0 0 / 20%), 0px 23.3333px 52.1227px rgba(0, 0, 0, .03), 0px 13.8667px 28.3481px rgba(0, 0, 0, .024), 0px 7.2px 14.4625px rgb(0 0 0 / 2%), 0px 2.93333px 7.25185px rgba(0, 0, 0, .016), 0px 0.666667px 3.50231px rgba(0, 0, 0, .01);
+">
+    <div class="card-body">
+        <img src="/images/girl_hanging_over_ledge.svg" class="position-absolute top-0 start-0"
+            style="transform: translateY(-135px); width: 150px;">
         <div class="input-group">
             <input id="searchInput" type="text" class="form-control form-control-lg" placeholder="Search..." disabled>
             <button class="btn btn-primary" type="button" disabled><i class="bi bi-search"></i></button>
         </div>
-    </div>
-    <div id="searchResults" style="min-height: 250px;" class="row p-3">
+        <div id="searchResults" class="row p-3">
+        </div>
     </div>
 </div>
+<style>
+    #searchResults {
+        height: 225px;
+        /* Default min-height for small screens */
+        overflow-y: none;
+    }
+
+    @media (min-width: 576px) {
+        #searchResults {
+            height: 300px;
+            /* Min-height for screens wider than 576px */
+        }
+    }
+
+    @media (min-width: 768px) {
+        #searchResults {
+            height: 300px;
+            /* Min-height for screens wider than 768px */
+        }
+    }
+</style>
 <style>
     @keyframes pop {
         0% {
@@ -31,80 +53,43 @@
     const searchQueries = [
         'home office setup',
         'toys for kids',
-        'outdoor camping gear',
-        'healthy snacks'
+        'tennis gear'
     ];
     const searchResultsData = {
         'toys for kids': [
             {
-                name: 'Interactive Talking Teddy Bear',
-                image: 'talking-teddy-bear.webp'
+                name: 'Teddy Bear',
+                image: 'teddy_bear.svg'
             },
             {
-                name: 'Remote Control Racing Car',
-                image: 'rc-racing-car.webp'
+                name: 'Remote Control Car',
+                image: 'rc_car.svg'
             },
             {
-                name: 'Educational Building Blocks Set',
-                image: 'building-blocks.webp'
-            }
-        ],
-        'dry my basement': [
-            {
-                name: 'PowerDry Pro Dehumidifier',
-                image: 'dehumidifier.webp'
-            },
-            {
-                name: 'HydroFlow Submersible Water Pump',
-                image: 'water-pump.webp'
-            },
-            {
-                name: 'Sand Bags',
-                image: 'desiccant-packs.webp'
-            }
-        ],
-        'outdoor camping gear': [
-            {
-                name: 'Adventurer 4-Person Tent',
-                image: 'camping-tent.webp'
-            },
-            {
-                name: 'TrailChef Portable Camping Stove',
-                image: 'camping-stove.webp'
-            },
-            {
-                name: 'Insulated Sleeping Bag',
-                image: 'sleeping-bag.webp'
-            }
-        ],
-        'healthy snacks': [
-            {
-                name: 'Organic Fruit and Nut Granola Bars',
-                image: 'granola-bars.webp'
-            },
-            {
-                name: 'Baked Veggie Chips Variety Pack',
-                image: 'veggie-chips.webp'
-            },
-            {
-                name: 'Dried Fruit and Nut Mix',
-                image: 'dried-fruit-mix.webp'
+                name: 'Beach Ball',
+                image: 'beach_ball.svg'
             }
         ],
         'home office setup': [
             {
-                name: 'Ergonomic Office Chair',
-                image: 'office-chair.webp'
+                name: 'Ergonomic Chair',
+                image: 'office_chair.svg'
             },
             {
-                name: 'Adjustable Standing Desk',
-                image: 'standing-desk.webp'
+                name: 'Desk Lamp',
+                image: 'office_lamp.svg'
             },
             {
-                name: 'Noise-Cancelling Headphones',
-                image: 'noise-cancelling-headphones.webp'
+                name: 'Headphones',
+                image: 'headphones.svg'
             }
-        ]
+        ],
+        'tennis gear': [
+            { name: 'Tennis Racket', image: 'racket.svg' },
+            { name: 'Sneakers', image: 'tennis_shoe.svg' },
+            { name: 'Sports Bag', image: 'bag.svg' }
+        ],
+
     };
 
     let currentQueryIndex = 0;
@@ -144,14 +129,14 @@
 
             products.forEach((product, index) => {
                 resultsHTML += `
-                <div class="col-lg-4 mb-4" style="transform: scale(1); animation: pop 0.5s ease-in-out;">
-                    <div class="card text-black bg-light h-100">
-                        <div class="card-body text-center">
-                            <img src="dist/images/${product.image}" alt="${product.name}" class="mb-4" style="width: 80px;">
-                            <h3 class="card-title">${product.name}</h3>
-                        </div>
+                <div class="col-4 mb-4" style="transform: scale(1); animation: pop 0.5s ease-in-out; ">
+                    <div class="card text-black bg-light h-100" style="box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08);">
+                    <div class="card-body text-center" style="padding: 0px;">
+                    <img src="/images/${product.image}" alt="${product.name}" class="mb-4 img-fluid">
+                    <h3 class="card-title" style="font-size: clamp(0.8rem, 2.5vw, 1.2rem);">${product.name}</h3>
                     </div>
-                </div>
+                    </div>
+                   </div>
     `;
             });
 
