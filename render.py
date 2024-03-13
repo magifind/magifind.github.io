@@ -27,6 +27,13 @@ for landing_page in landing_pages:
     with open("./static/" + slug + "/index.html", "w", encoding="utf-8") as f:
         f.write(template.render(landing_page=landing_page))
 
+# render ai_search_test.html
+template = template_env.get_template("ai_search_test.html")
+# create folder
+os.mkdir("./static/ai-search-test")
+with open("./static/ai-search-test/index.html", "w", encoding="utf-8") as f:
+    f.write(template.render())
+
 # Blog
 with open("./blog.yml", "r") as f:
     blog = yaml.safe_load(f)
