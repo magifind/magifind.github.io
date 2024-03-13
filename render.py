@@ -20,14 +20,12 @@ with open("./static/about-us/index.html", "w", encoding="utf-8") as f:
 with open("./landing_pages.yml", "r") as f:
     landing_pages = yaml.safe_load(f)
 
-for category in landing_pages:
-    for landing_page in category["landing_pages"]:
-        slug = landing_page["slug"]
-        os.mkdir("./static/" + slug)
-        template = template_env.get_template("landing_page.html")
-        with open("./static/" + slug + "/index.html", "w", encoding="utf-8") as f:
-            f.write(template.render(landing_page=landing_page))
-
+for landing_page in landing_pages:
+    slug = landing_page["slug"]
+    os.mkdir("./static/" + slug)
+    template = template_env.get_template("landing_page.html")
+    with open("./static/" + slug + "/index.html", "w", encoding="utf-8") as f:
+        f.write(template.render(landing_page=landing_page))
 
 # Blog
 with open("./blog.yml", "r") as f:
