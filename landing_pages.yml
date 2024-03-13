@@ -1,0 +1,45 @@
+- title: Add recommendations to any website or app
+  slug: ai-recommendations
+  sections:
+  - title: Personalized Recommendations for Delightful User Journeys
+    paragraph: With Magifind's AI-powered recommendations, delight your users by suggesting the most relevant items and content at every step of their journey. Our advanced algorithms leverage behavioral cues to surface personalized recommendations that inspire undecided visitors and drive higher engagement, conversions, and revenue.
+    image_alt: AI recommendations carousel on an ecommerce website
+    image: /images/ai-recommendations-carousel.svg
+  - title: Maximize Catalog Exposure and Cross-Selling Opportunities
+    paragraph: Seamlessly integrate Magifind with your backend CMS and product catalogs to expose the full breadth of your offerings to users. Our frequently bought together, looking similar, alternative items, and trending items models ensure your users discover complementary products, increasing average order value and cross-selling success.
+    image_alt: Ecommerce product page with related product recommendations
+    image: /images/related-product-recommendations.svg
+  - title: Actionable Insights for Continuous Optimization
+    paragraph: Gain deep insights into your customers' preferences and behavior with detailed analytics on recommendation performance. Track click-through rates, conversions, and revenue impact to continuously refine your recommendation strategies and deliver exceptional user experiences.
+    image_alt: Dashboard with recommendation performance metrics
+    image: /images/recommendation-performance-dashboard.svg
+  faq:
+  - question: How fast are Magifind's AI Recommendations?
+    answer: Our recommendations are lightning-fast, with most requests processed within 1 to 20 milliseconds, ensuring a seamless user experience.
+  - question: How does Magifind generate recommendations?
+    answer: Magifind's recommendations are powered by advanced machine learning models and our robust AI foundation. We collect user interaction data from the past 30 days and apply collaborative filtering algorithms to identify similar buying patterns and recommend items accordingly.
+  - question: What languages are supported?
+    answer: Magifind's recommendation engine is language-agnostic, supporting both alphabet-based and symbol-based languages like Chinese, Japanese, and Korean.
+  - question: How do I get started with Magifind's AI Recommendations?
+    answer: Getting started is a four-step process - integrate our APIs, provide user interaction data, configure recommendation models, and deploy personalized recommendations across your user touchpoints.
+
+
+- title: AI-Powered Recommendations that Boost Conversions
+  slug: ai-powered-recommendations
+  sections:
+  - title: Personalized Suggestions to Delight Your Users
+    paragraph: Magifind uses advanced AI and behavioral data to provide highly relevant product recommendations and content suggestions at every step of the user journey. Increase engagement, cross-sells, and conversions with intelligent recommendations tailored to each user.
+    image_alt: Personalized product recommendations in user interface
+  - title: Unlock the Full Potential of Your Catalog
+    paragraph: Seamlessly integrate Magifind with your existing CMS and product catalogs to maximize exposure of your offerings. Our AI models analyze your data to identify trending items, frequently bought together products, visually similar items, and more to keep users engaged.
+    image_alt: Diagram showing Magifind integration with CMS and product catalog
+  - title: Actionable Insights to Optimize Recommendations 
+    paragraph: Gain a deeper understanding of your customers with Magifind's detailed analytics. Track the performance of recommendation carousels, measure impact with metrics like click-through and conversion rates, and continuously refine your recommendation strategy.
+    image_alt: Dashboard showing recommendation performance metrics
+  faq:
+  - question: How do I get started with Magifind's AI Recommendations?
+    answer: Implementing Magifind is a simple 4-step process. First, send your catalog data to Magifind. Then, add a unique user token to identify users. Next, collect user events to train the models. Finally, fetch and display the AI recommendations in your UI. Our team is here to assist you every step of the way.
+  - question: What types of recommendations does Magifind provide?
+    answer: Magifind offers a wide range of recommendation models including frequently bought together, visually similar items, trending products, alternative suggestions, and 1:1 personalized recommendations based on each user's unique behavior and context. Mix and match models to create the ideal experience.
+  - question: How does Magifind generate such accurate recommendations?
+    answer: Magifind's advanced machine learning models analyze both item data and user interactions to uncover meaningful patterns and relationships. The algorithms learn which items are commonly bought together, which products are similar based on user behavior, current trends, and individual user preferences to generate highly relevant, personalized recommendations in real-time.
