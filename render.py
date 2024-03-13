@@ -10,6 +10,13 @@ template_env = jinja2.Environment(loader=jinja2.FileSystemLoader("./templates"))
 shutil.rmtree("./static", ignore_errors=True)
 os.mkdir("./static")
 
+# render about us page, create about-us folder
+os.mkdir("./static/about-us")
+template = template_env.get_template("about_us.html")
+with open("./static/about-us/index.html", "w", encoding="utf-8") as f:
+    f.write(template.render())
+
+
 # Blog
 with open("./blog.yml", "r") as f:
     blog = yaml.safe_load(f)
