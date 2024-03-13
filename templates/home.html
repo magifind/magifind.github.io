@@ -15,40 +15,39 @@
 
 {% include('demo.html') %}
 
-<div class="container mt-5 mb-5">
-    <div class="row text-center">
-        <h2 class="mb-4" id="features">Discover what we have to offer</h2>
-        <div class="col-lg-4 mb-4">
-            <div class="card h-100">
-                <div class="card-body text-center">
-                    <img src="/images/amazed.svg" class="mb-4" style="width: 160px;">
-                    <h3 class="card-title">Enhance User Experience</h3>
-                    <p class="card-text">Provide your customers with a superior search experience that understands their
-                        intent and delivers accurate and relevant results.</p>
-                </div>
-            </div>
+<div class="container mt-5 mb-5" style="max-width: 650px">
+    <h2 class="text-center mb-4" id="features">Discover what we have to offer</h2>
+    
+    <div class="row mb-4 align-items-center pt-4">
+        <div class="col-md-6 order-md-2 text-center">
+            <img src="/images/amazed.svg" alt="Enhance User Experience" style="width: 200px;" class="float-md-end mb-3 img-fluid">
         </div>
-        <div class="col-lg-4 mb-4">
-            <div class="card h-100">
-                <div class="card-body text-center">
-                    <img src="/images/rocket.svg" class="mb-4" style="width: 160px;">
-                    <h3 class="card-title">Boost Conversions</h3>
-                    <p class="card-text">Improve your online retail conversions by helping customers find the products
-                        they're looking for quickly and easily.</p>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-4 mb-4">
-            <div class="card h-100">
-                <div class="card-body text-center">
-                    <img src="/images/magic_wand.svg" class="mb-4" style="width: 160px;">
-                    <h3 class="card-title">Works like magic</h3>
-                    <p class="card-text">Zero integration, our fully autonomous crawlers index all the content you have.
-                    </p>
-                </div>
-            </div>
+        <div class="col-md-6">
+            <h3>Enhance User Experience</h3>
+            <p>Provide your customers with a superior search experience that understands their intent and delivers accurate and relevant results.</p>
         </div>
     </div>
+
+    <div class="row mb-4 align-items-center pt-4">
+        <div class="col-md-6 text-center">
+            <img src="/images/rocket.svg" alt="Boost Conversions" style="width: 200px;" class="float-md-start mb-3 img-fluid">
+        </div>
+        <div class="col-md-6">
+            <h3>Boost Conversions</h3>
+            <p>Improve your online retail conversions by helping customers find the products they're looking for quickly and easily.</p>
+        </div>
+    </div>
+
+    <div class="row mb-4 align-items-center pt-4">
+        <div class="col-md-6 order-md-2 text-center">
+            <img src="/images/magic_wand.svg" alt="Works like magic" style="width: 200px;" class="float-md-end mb-3 img-fluid">
+        </div>
+        <div class="col-md-6">
+            <h3>Works like magic</h3>
+            <p>Zero integration, our fully autonomous crawlers index all the content you have. Get up and running in literally minutes.</p>
+        </div>
+    </div>
+
 </div>
 
 {% include('cta_form.html') %}
