@@ -1,17 +1,59 @@
 {% extends 'base.html' %}
 
 {% block content %}
+<style>
+    .display-4 span.search {
+      position: relative;
+      display: inline-block;
+    }
+    
+    .display-4 span.search svg {
+      position: absolute;
+      left: 0;
+      bottom: calc(-25px - 3vw); /* Increased the bottom margin for all viewports */
+      width: 33%; /* Smaller base width for mobile */
+      height: auto;
+    }
+    
+    @media (min-width: 768px) {
+      .display-4 span.search svg {
+        bottom: -75px; /* Increased the margin for larger screens */
+        width: 40%; /* Original width for larger screens */
+      }
+    }
+    
+    .squiggle {
+      stroke-dasharray: 100;
+      stroke-dashoffset: 100;
+      animation: draw 1s ease-in-out forwards;
+      stroke-width: 1.5; /* Keep the line thin */
+      transform: scaleY(0.7); /* Scale the squiggle to reduce its height; adjust the value as needed */
+      transform-origin: 50% 0%; /* Scale around the top of the path to avoid visual offset */
+    }
+    
+    @keyframes draw {
+      to {
+        stroke-dashoffset: 0;
+      }
+    }
+</style>
+
 <div class="container mt-5 mb-5">
     <div class="row justify-content-center">
         <div class="col-lg-8 text-center">
-            <h1 class="display-4 mb-4 mt-4">Better search, more sales</h1>
+            <h1 class="display-4 mb-4 mt-4">Better <span class="search">search,<span>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 20">
+                <path class="squiggle" fill="none" stroke="#FFE169" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M0,10 c5,0,7-3,11-3 s1,5,5.5,5 s10.75-3,20.5-3"/>
+            </svg>
+</span>more sales</h1>
             <p class="lead mb-5">Our AI search improves user experience and requires no tedious integration. It is time
                 to drop traditional keyword search and adopt the next-gen.</p>
             <a href="#cta" class="btn btn-primary btn-lg mb-5">Get started now</a>
-
         </div>
     </div>
 </div>
+    
+    
 
 {% include('demo.html') %}
 
@@ -20,25 +62,25 @@
 
     <div class="row mb-4 align-items-center pt-4">
         <div class="col-md-6 order-md-2 text-center">
-            <img src="/images/amazed.svg" alt="Enhance User Experience" style="width: 200px;"
+            <img src="/images/rocket.svg" alt="Enhance User Experience" style="width: 200px;"
                 class="float-md-end mb-3 img-fluid">
-        </div>
-        <div class="col-md-6">
-            <h3>Enhance User Experience</h3>
-            <p>Provide your customers with a superior search experience that understands their intent and delivers
-                accurate and relevant results.</p>
-        </div>
-    </div>
-
-    <div class="row mb-4 align-items-center pt-4">
-        <div class="col-md-6 text-center">
-            <img src="/images/rocket.svg" alt="Boost Conversions" style="width: 200px;"
-                class="float-md-start mb-3 img-fluid">
         </div>
         <div class="col-md-6">
             <h3>Boost Conversions</h3>
             <p>Improve your online retail conversions by helping customers find the products they're looking for quickly
                 and easily.</p>
+        </div>
+    </div>
+
+    <div class="row mb-4 align-items-center pt-4">
+        <div class="col-md-6 text-center">
+            <img src="/images/amazed.svg" alt="Boost Conversions" style="width: 200px;"
+                class="float-md-start mb-3 img-fluid">
+        </div>
+        <div class="col-md-6">
+            <h3>Enchance User Experience</h3>
+            <p>Provide your customers with a superior search experience that understands their intent and delivers
+                accurate and relevant results.</p>
         </div>
     </div>
 
