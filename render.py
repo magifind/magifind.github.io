@@ -16,6 +16,11 @@ template = template_env.get_template("about_us.html")
 with open("./static/about-us/index.html", "w", encoding="utf-8") as f:
     f.write(template.render())
 
+os.mkdir("./static/investors")
+template = template_env.get_template("investors.html")
+with open("./static/investors/index.html", "w", encoding="utf-8") as f:
+    f.write(template.render())
+
 # render landing pages from landing_pages.yml
 with open("./landing_pages.yml", "r") as f:
     landing_pages = yaml.safe_load(f)
