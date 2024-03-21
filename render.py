@@ -4,6 +4,9 @@ import os
 import yaml
 import datetime
 
+urls = []
+
+
 template_env = jinja2.Environment(loader=jinja2.FileSystemLoader("./templates"))
 
 # Delete and recreate static folder
@@ -15,11 +18,13 @@ os.mkdir("./static/about-us")
 template = template_env.get_template("about_us.html")
 with open("./static/about-us/index.html", "w", encoding="utf-8") as f:
     f.write(template.render())
+urls.append("https://magifind.com/about-us/")
 
 os.mkdir("./static/investors")
 template = template_env.get_template("investors.html")
 with open("./static/investors/index.html", "w", encoding="utf-8") as f:
     f.write(template.render())
+urls.append("https://magifind.com/investors/")
 
 # render landing pages from landing_pages.yml
 with open("./landing_pages.yml", "r") as f:
@@ -31,6 +36,7 @@ for landing_page in landing_pages:
     template = template_env.get_template("landing_page.html")
     with open("./static/" + slug + "/index.html", "w", encoding="utf-8") as f:
         f.write(template.render(landing_page=landing_page))
+    urls.append("https://magifind.com/" + slug + "/")
 
 # render ai_search_test.html
 template = template_env.get_template("ai_search_test.html")
@@ -38,6 +44,7 @@ template = template_env.get_template("ai_search_test.html")
 os.mkdir("./static/ai-search-test")
 with open("./static/ai-search-test/index.html", "w", encoding="utf-8") as f:
     f.write(template.render())
+urls.append("https://magifind.com/ai-search-test/")
 
 # Blog
 with open("./blog.yml", "r") as f:
@@ -69,7 +76,6 @@ shutil.copytree("./images", "./static/images")
 
 
 # Sitemap
-urls = []
 for post in blog["posts"]:
     urls.append("https://magifind.com/blog/" + post["slug"] + "/")
 urls.append("https://magifind.com/blog/")
