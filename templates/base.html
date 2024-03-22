@@ -2,14 +2,6 @@
 <html lang="en" class="no-js">
 
 <head>
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZNSK9Z87VM"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag() { dataLayer.push(arguments); }
-        gtag('js', new Date());
-
-        gtag('config', 'G-ZNSK9Z87VM');
-    </script>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -22,6 +14,19 @@
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="/dist/custom.css">
+    <style>
+        .cookie-banner {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background-color: #f7f6f3;
+            padding: 20px;
+            box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+            z-index: 9999;
+            display: none;
+        }
+    </style>
 </head>
 
 <body>
@@ -38,6 +43,66 @@
 
     {% include 'footer.html' %}
     {% endblock %}
+
+    <div class="cookie-banner">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-10">
+                    <p>We use cookies to enhance your experience on our website. By continuing to use our site, you
+                        agree to our cookie policy.</p>
+                </div>
+                <div class="col-md-2 text-end">
+                    <button class="btn btn-primary btn-sm accept-cookie">Accept</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Check if the user has already accepted cookies
+        function checkCookieAcceptance() {
+            return localStorage.getItem('cookieAccepted') === 'true';
+        }
+
+        // Set the cookie acceptance flag in local storage
+        function acceptCookies() {
+            localStorage.setItem('cookieAccepted', 'true');
+            document.querySelector('.cookie-banner').style.display = 'none';
+        }
+
+        // Show the cookie banner if cookies haven't been accepted
+        function showCookieBanner() {
+            if (!checkCookieAcceptance()) {
+                document.querySelector('.cookie-banner').style.display = 'block';
+            } else {
+                loadGoogleAnalytics();
+            }
+        }
+
+        // Load the Google Analytics snippet if cookies have been accepted
+        function loadGoogleAnalytics() {
+            if (checkCookieAcceptance()) {
+                const script = document.createElement('script');
+                script.src = 'https://www.googletagmanager.com/gtag/js?id=G-ZNSK9Z87VM';
+                script.async = true;
+                document.head.appendChild(script);
+
+                window.dataLayer = window.dataLayer || [];
+                function gtag() { dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'G-ZNSK9Z87VM');
+            }
+        }
+
+        // Event listener for the accept cookie button
+        document.querySelector('.accept-cookie').addEventListener('click', function () {
+            acceptCookies();
+            loadGoogleAnalytics();
+        });
+
+        // Show the cookie banner on page load
+        window.addEventListener('load', showCookieBanner);
+    </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
         crossorigin="anonymous"></script>
