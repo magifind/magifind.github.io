@@ -7,38 +7,45 @@ traditional keyword search and adopt the next-gen.{% endblock %}
 {% block content %}
 <style>
     .display-4 span.search {
-      position: relative;
-      display: inline-block;
+        position: relative;
+        display: inline-block;
     }
-    
+
     .display-4 span.search svg {
-      position: absolute;
-      left: 0;
-      bottom: calc(-25px - 3vw); /* Increased the bottom margin for all viewports */
-      width: 33%; /* Smaller base width for mobile */
-      height: auto;
+        position: absolute;
+        left: 0;
+        bottom: calc(-25px - 3vw);
+        /* Increased the bottom margin for all viewports */
+        width: 33%;
+        /* Smaller base width for mobile */
+        height: auto;
     }
-    
+
     @media (min-width: 768px) {
-      .display-4 span.search svg {
-        bottom: -75px; /* Increased the margin for larger screens */
-        width: 40%; /* Original width for larger screens */
-      }
+        .display-4 span.search svg {
+            bottom: -75px;
+            /* Increased the margin for larger screens */
+            width: 40%;
+            /* Original width for larger screens */
+        }
     }
-    
+
     .squiggle {
-      stroke-dasharray: 100;
-      stroke-dashoffset: 100;
-      animation: draw 1s ease-in-out forwards;
-      stroke-width: 1.5; /* Keep the line thin */
-      transform: scaleY(0.7); /* Scale the squiggle to reduce its height; adjust the value as needed */
-      transform-origin: 50% 0%; /* Scale around the top of the path to avoid visual offset */
+        stroke-dasharray: 100;
+        stroke-dashoffset: 100;
+        animation: draw 1s ease-in-out forwards;
+        stroke-width: 1.5;
+        /* Keep the line thin */
+        transform: scaleY(0.7);
+        /* Scale the squiggle to reduce its height; adjust the value as needed */
+        transform-origin: 50% 0%;
+        /* Scale around the top of the path to avoid visual offset */
     }
-    
+
     @keyframes draw {
-      to {
-        stroke-dashoffset: 0;
-      }
+        to {
+            stroke-dashoffset: 0;
+        }
     }
 </style>
 
@@ -46,17 +53,19 @@ traditional keyword search and adopt the next-gen.{% endblock %}
     <div class="row justify-content-center">
         <div class="col-lg-8 text-center">
             <h1 class="display-4 mb-4 mt-4">Better <span class="search">search,<span>
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 20">
-                <path class="squiggle" fill="none" stroke="#FFE169" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M0,10 c5,0,7-3,11-3 s1,5,5.5,5 s10.75-3,20.5-3"/>
-            </svg>
-</span>more sales</h1>
-        <p class="lead mb-5">AI search that truly understands beyond keywords</p>
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 20">
+                            <path class="squiggle" fill="none" stroke="#FFE169" stroke-width="1.5"
+                                stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10"
+                                d="M0,10 c5,0,7-3,11-3 s1,5,5.5,5 s10.75-3,20.5-3" />
+                        </svg>
+                    </span>more sales</h1>
+            <p class="lead mb-5">AI search that truly understands beyond keywords</p>
             <a href="#cta" class="btn btn-primary btn-lg">Start now!</a>
         </div>
     </div>
 </div>
-    
-    
+
+
 
 {% include('demo.html') %}
 
@@ -124,7 +133,7 @@ traditional keyword search and adopt the next-gen.{% endblock %}
         </div>
         {% endfor %}
     </div>
-    <img src="/images/question.svg" style="width: 200px;">
+    <img src="/images/question.svg" style="width: 200px;" alt="Magifind - FAQ">
 </div>
 
 {% endblock %}
