@@ -69,7 +69,7 @@ with open("./faq.yml", "r") as f:
     faq = yaml.safe_load(f)
 template = template_env.get_template("home.html")
 with open("./static/index.html", "w", encoding="utf-8") as f:
-    f.write(template.render(blog=blog, faq=faq))
+    f.write(template.render(blog=blog, faq=faq, posts=blog["posts"]))
 
 # copy all files from ./images to ./static
 shutil.copytree("./images", "./static/images")
@@ -98,4 +98,4 @@ with open("./static/robots.txt", "w") as f:
     f.write(template.render())
 
 # copy dist folder
-shutil.copytree("./dist", "./static/dist")
+shutil.copytree("./css", "./static/css")

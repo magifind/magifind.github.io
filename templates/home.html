@@ -112,6 +112,23 @@ traditional keyword search and adopt the next-gen.{% endblock %}
 
 {% include('cta_form.html') %}
 
+<div class="container mt-5 mb-5">
+    <h2 class="text-center mb-4">Latest Blog Posts</h2>
+    <div class="row"> {% for post in posts[:5] %} <div class="col-md-4 mb-4">
+            <div class="card h-100 d-flex flex-column"> <img src="/blog/{{post.slug}}/{{ post.image }}"
+                    class="card-img-top" alt="{{ post.title }}">
+                <div class="card-body d-flex flex-column flex-grow-1">
+                    <h5 class="card-title text-center">{{ post.title }}</h5>
+                    <div class="mt-auto text-center"> <a href="/blog/{{ post.slug }}" class="btn btn-primary">Read
+                            More</a> </div>
+                </div>
+                <div class="card-footer"> <small class="text-muted">By {{ post.author }} | {{ post.date }}</small>
+                </div>
+            </div>
+        </div> {% endfor %} </div>
+    <div class="text-center mt-4"> <a href="/blog" class="btn btn-secondary">View All Posts</a> </div>
+</div>
+
 <div class="container  mt-5">
     <h2 class="text-center mb-5">FAQ</h2>
     <div class="accordion" id="faqAccordion">
@@ -135,5 +152,6 @@ traditional keyword search and adopt the next-gen.{% endblock %}
     </div>
     <img src="/images/question.svg" style="width: 200px;" alt="Magifind - FAQ">
 </div>
+
 
 {% endblock %}

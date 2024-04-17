@@ -17,6 +17,10 @@ h6 {
     color: #000
 }
 
+h3 {
+    font-size: 1.1rem !important;
+}
+
 a {
     color: #000;
     text-decoration: none;
