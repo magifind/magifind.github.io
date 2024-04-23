@@ -117,11 +117,10 @@ traditional keyword search and adopt the next-gen.{% endblock %}
             <div class="card h-100 d-flex flex-column"> <img src="/blog/{{post.slug}}/{{ post.image }}"
                     class="card-img-top" alt="{{ post.title }}">
                 <div class="card-body d-flex flex-column flex-grow-1">
-                    <h5 class="card-title text-center">{{ post.title }}</h5>
-                    <div class="mt-auto text-center"> <a href="/blog/{{ post.slug }}" class="btn btn-primary">Read
+                    <h3 class="card-title text-center">{{ post.title }}</h3>
+                    <div class="mt-auto text-center"> <a href="/blog/{{ post.slug }}" class="btn btn-primary"
+                            title="Read more on {{ post.title }}">Read
                             More</a> </div>
-                </div>
-                <div class="card-footer"> <small class="text-muted">By {{ post.author }} | {{ post.date }}</small>
                 </div>
             </div>
         </div> {% endfor %} </div>
