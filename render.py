@@ -53,6 +53,7 @@ os.mkdir("./static/blog")
 for post in blog["posts"]:
     slug = post["slug"]
     os.mkdir("./static/blog/" + slug)
+    post['image'] = post['image'].replace('.png', '.svg')
     template = template_env.get_template("post.html")
     with open("./static/blog/" + slug + "/index.html", "w", encoding="utf-8") as f:
         f.write(template.render(post=post))

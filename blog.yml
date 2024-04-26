@@ -17,7 +17,7 @@ posts:
       <h3>Get Started with Magifind</h3>
       <p>If you're looking to enhance your e-commerce site's search functionality, Magifind is worth considering. With its AI-powered semantic search, automated indexing, and easy integration, Magifind can help you provide a better search experience for your customers.</p>
       <p>To learn more about Magifind and how it can benefit your e-commerce business, visit <a href="https://www.magifind.com">www.magifind.com</a>. Take the first step towards improving your search experience and see the positive impact it can have on your business.</p>
-    image: "online-bag-shopping.svg"
+    image: "online-bag-shopping.png"
     link_text: "Read the full article on E-commerce Search"
 
   - author: "Koen van Eijk"
@@ -38,7 +38,7 @@ posts:
       <h3>Enhance Your Content Discovery with Magifind</h3>
       <p>If you're looking to take your media or publishing website's content discovery to the next level, Magifind is the solution you need. With its advanced semantic search, automated indexing, and seamless integration, Magifind can help you engage readers and grow your audience.</p>
       <p>To learn more about how Magifind can benefit your media or publishing website, visit <a href="https://www.magifind.com">www.magifind.com</a>. Start revolutionizing your content discovery today and see the impact it can have on your website's success.</p>
-    image: "index.svg"
+    image: "index.png"
     link_text: "Read the full article on Content Discovery"
 
   - author: "Koen van Eijk"
@@ -59,7 +59,7 @@ posts:
       <h3>Experience the Magifind Difference</h3>
       <p>Magifind is transforming the way healthcare organizations search for and acquire medical equipment. With its intelligent search capabilities, comprehensive indexing, and seamless integration, Magifind empowers healthcare professionals to make informed decisions and deliver the best possible care to their patients.</p>
       <p>To learn more about how Magifind can revolutionize your healthcare organization's medical equipment search and procurement process, visit <a href="https://www.magifind.com/healthcare">www.magifind.com/healthcare</a>. Discover the power of AI-driven semantic search and take your healthcare organization to the next level.</p>
-    image: "puter.svg"
+    image: "puter.png"
     link_text: "Read the full article on Medical Equipment Search"
 
   - author: "Koen van Eijk" 
@@ -80,5 +80,5 @@ posts:
       <h3>Experience the Magifind Advantage</h3>
       <p>Magifind is revolutionizing the way law firms and legal professionals conduct research. With its intelligent search capabilities, comprehensive legal content indexing, and seamless integration, Magifind empowers legal professionals to work more efficiently and effectively.</p>
       <p>To learn more about how Magifind can transform your law firm's legal research process, visit <a href="https://www.magifind.com/legal">www.magifind.com/legal</a>. Discover the power of AI-driven semantic search and take your legal practice to new heights.</p>
-    image: "scales.svg"
+    image: "scales.png"
     link_text: "Read the full article on Legal Research"
