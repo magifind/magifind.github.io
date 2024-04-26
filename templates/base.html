@@ -9,11 +9,12 @@
     <meta name="description"
         content="{% block description %}Magifind is a revolutionary AI-powered semantic search engine that transforms how users find information on websites. By harnessing cutting-edge artificial intelligence and natural language processing, Magifind delivers unparalleled search results that are both highly relevant and context-aware.{% endblock %}">
     <link rel="icon" href="/images/logo.svg" alt="Magifind">
-    <link href="https://fonts.googleapis.com/css?family=Poppins:500&display=swap" rel="stylesheet">
+    <!-- <link href="https://fonts.googleapis.com/css?family=Poppins:500&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-    <link rel="stylesheet" href="/css/custom.css">
+    <link rel="stylesheet" href="/css/custom.css"> -->
+    <link rel="stylesheet" href="/css/compiled.css">
     <style>
         .cookie-banner {
             position: fixed;
@@ -27,6 +28,7 @@
             display: none;
         }
     </style>
+
 </head>
 
 <body>
@@ -81,7 +83,6 @@
 
         // Load the Google Analytics snippet if cookies have been accepted
         function loadGoogleAnalytics() {
-            if (checkCookieAcceptance()) {
                 const script = document.createElement('script');
                 script.src = 'https://www.googletagmanager.com/gtag/js?id=G-ZNSK9Z87VM';
                 script.async = true;
@@ -91,7 +92,6 @@
                 function gtag() { dataLayer.push(arguments); }
                 gtag('js', new Date());
                 gtag('config', 'G-ZNSK9Z87VM');
-            }
         }
 
         // Event listener for the accept cookie button
