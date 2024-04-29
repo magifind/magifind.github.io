@@ -24,7 +24,7 @@ os.mkdir("./static/investors")
 template = template_env.get_template("investors.html")
 with open("./static/investors/index.html", "w", encoding="utf-8") as f:
     f.write(template.render())
-urls.append("https://magifind.com/investor  s/")
+urls.append("https://magifind.com/investors/")
 
 # render landing pages from landing_pages.yml
 with open("./landing_pages.yml", "r") as f:
