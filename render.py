@@ -21,6 +21,20 @@ with open("./static/about-us/index.html", "w", encoding="utf-8") as f:
     f.write(template.render(canonical_url=url))
 urls.append(url)
 
+# render privacy.html as /privacy-policy/ (create dir)
+os.mkdir("./static/privacy-policy")
+template = template_env.get_template("privacy.html")
+url = "https://magifind.com/privacy-policy/"
+with open("./static/privacy-policy/index.html", "w", encoding="utf-8") as f:
+    f.write(template.render(canonical_url=url))
+
+# render terms.html as /terms-and-conditions/ (create dir)
+os.mkdir("./static/terms-and-conditions")
+template = template_env.get_template("terms.html")
+url = "https://magifind.com/terms-and-conditions/"
+with open("./static/terms-and-conditions/index.html", "w", encoding="utf-8") as f:
+    f.write(template.render(canonical_url=url))
+
 # render 404 page
 template = template_env.get_template("404.html")
 url = "https://magifind.com/404.html"
