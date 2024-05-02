@@ -15,11 +15,12 @@
     <meta name="googlebot" content="index, follow">
     <meta name="bingbot" content="index, follow">
     {% endblock %}
+
     <meta property="og:title" content="{% include 'title.html' %} - Magifind">
     <meta property="og:description" content="{% include 'description.html' %}">
-    <meta property="og:image" content="/images/ogimage.png">
+    <meta property="og:image" content="https://www.magifind.com/images/ogimage.png">
     {% if canonical_url %}<meta property="og:url" content="{{ canonical_url }}">{% endif %}
-    <meta name="twitter:card" content="images/ogimage.png">
+    <meta name="twitter:card" content="https://www.magifind.com/images/ogimage.png">
     <link href="https://fonts.googleapis.com/css?family=Poppins:500&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
