@@ -21,6 +21,12 @@ with open("./static/about-us/index.html", "w", encoding="utf-8") as f:
     f.write(template.render(canonical_url=url))
 urls.append(url)
 
+# render 404 page
+template = template_env.get_template("404.html")
+url = "https://magifind.com/404.html"
+with open("./static/404.html", "w", encoding="utf-8") as f:
+    f.write(template.render(canonical_url=url))
+
 # render investors page, create investors folder
 os.mkdir("./static/investors")
 template = template_env.get_template("investors.html")

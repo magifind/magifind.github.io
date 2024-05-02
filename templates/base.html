@@ -10,9 +10,11 @@
         content="{% include 'description.html' %}">
     {% if canonical_url %}<link rel="canonical" href="{{ canonical_url }}">{% endif %}
     <link rel="icon" href="/images/logo.svg" alt="Magifind">
+    {% block index_meta %}
     <meta name="robots" content="index, follow">
     <meta name="googlebot" content="index, follow">
     <meta name="bingbot" content="index, follow">
+    {% endblock %}
     <meta property="og:title" content="{% include 'title.html' %} - Magifind">
     <meta property="og:description" content="{% include 'description.html' %}">
     <!-- <meta property="og:image" content="URL to image"> -->
