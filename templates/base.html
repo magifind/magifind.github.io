@@ -5,16 +5,16 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>{% block title %}AI Search{% endblock %} - Magifind</title>
+    <title>{% include 'title.html' %} - Magifind</title>
     <meta name="description"
-        content="{% block description %}Magifind is a revolutionary AI-powered semantic search engine that transforms how users find information on websites. By harnessing cutting-edge artificial intelligence and natural language processing, Magifind delivers unparalleled search results that are both highly relevant and context-aware.{% endblock %}">
+        content="{% include 'description.html' %}">
     {% if canonical_url %}<link rel="canonical" href="{{ canonical_url }}">{% endif %}
     <link rel="icon" href="/images/logo.svg" alt="Magifind">
     <meta name="robots" content="index, follow">
     <meta name="googlebot" content="index, follow">
     <meta name="bingbot" content="index, follow">
-    <meta property="og:title" content="{% block title %}AI Search{% endblock %} - Magifind">
-    <meta property="og:description" content="{% block description %}Magifind is a revolutionary AI-powered semantic search engine that transforms how users find information on websites. By harnessing cutting-edge artificial intelligence and natural language processing, Magifind delivers unparalleled search results that are both highly relevant and context-aware.{% endblock %}">
+    <meta property="og:title" content="{% include 'title.html' %} - Magifind">
+    <meta property="og:description" content="{% include 'description.html' %}">
     <!-- <meta property="og:image" content="URL to image"> -->
     {% if canonical_url %}<meta property="og:url" content="{{ canonical_url }}">{% endif %}
     <!-- <meta name="twitter:card" content="summary_large_image"> -->
