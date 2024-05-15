@@ -8,7 +8,7 @@
    <div class="row">
       <h2 class="mb-3">{{ post.title }}</h2>
       <p class="text-muted">by {{ post.author }} | {{ post.date }}</p>
-      <img src="/blog/{{post.slug}}/{{ post.image }}" class="img-fluid mb-4" alt="Feature Image">
+      <img src="/blog/{{post.slug}}/{{ post.image }}" class="img-fluid mb-4" alt="Feature Image" style="max-width: 600px; display: block; margin-left: auto; margin-right: auto;">
       {{ post.content | safe}}
    </div>
 </section>
