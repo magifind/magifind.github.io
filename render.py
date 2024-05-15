@@ -73,6 +73,10 @@ urls.append(url)
 # Blog
 with open("./blog.yml", "r") as f:
     blog = yaml.safe_load(f)
+
+# reverse posts
+blog["posts"] = blog["posts"][::-1]
+
 os.mkdir("./static/blog")
 for post in blog["posts"]:
     slug = post["slug"]
